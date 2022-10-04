@@ -10,7 +10,7 @@
   });
 
     axios
-        .get("http://127.0.0.1:8000")
+        .get("http://127.0.0.1:8000/api")
         .then((res) => {
             apiResult.data = res.data
             console.log(apiResult.data);
