@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AllView from '../views/AllView.vue'
 import CreateView from '../views/CreateView.vue'
+import UpdateView from '../views/UpdateView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,13 +11,19 @@ const router = createRouter({
       path: '/all',
       name: 'all',
       component: AllView
-      },
-      {
+    },
+    {
       path: '/create',
       name: 'create',
       component: CreateView
-      },
-      {
+    },
+    {
+      path: '/update',
+      name: 'update',
+      component: UpdateView,
+      props: (route) => route.params
+    },
+    {
       path: '/home',
       name: 'home',
       component: HomeView

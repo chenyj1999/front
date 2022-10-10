@@ -2,22 +2,18 @@
 
 import axios from 'axios';
 import { ref, reactive, computed } from 'vue';
-let apiResult = reactive({
-    data: [{
-        "id": "",
-        "title": ""
-    }]
-});
+
+const title = ref('');
+const content = ref('');
+
 console.log("createview")
-methods: {
-    submitForm:{
-        axios.post('http://127.0.0.1:8000/api', {
-            title: 'javascriptBasics@gmail.com',
-            content: '1234',
-        })
-            .then((response) => console.log(response))
-            .catch((error) => console.log(error))
-    }
+function post() {
+    axios.post('http://127.0.0.1:8000/api', {
+        title: title.value,
+        content: content.value,
+    })
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error))
 }
 
 
@@ -42,7 +38,7 @@ methods: {
             </label>
 
             <div class="actions">
-                <button type="submit">新增文章</button>
+                <button type="submit" @click="post">新增文章</button>
             </div>
 
         </form>
