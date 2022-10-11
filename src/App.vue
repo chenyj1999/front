@@ -6,8 +6,10 @@ import HelloWorld from './components/HelloWorld.vue'
 <template>
   <header>
     <nav>
-      <RouterLink to="/all">Index</RouterLink>
-      <RouterLink to="/create">Create</RouterLink>
+      <RouterLink to="/all">Index_test</RouterLink>
+      <RouterLink to="/create">Create_test</RouterLink>
+      <RouterLink to="/allnews">News</RouterLink>
+      <RouterLink to="/createnews">CreateNews</RouterLink>
       <!--<RouterLink to="/home">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>-->
     </nav>

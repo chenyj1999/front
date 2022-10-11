@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import AllView from '../views/AllView.vue'
 import CreateView from '../views/CreateView.vue'
 import UpdateView from '../views/UpdateView.vue'
+import AllNews from '../views/news/AllNews.vue'
+import CreateNews from '../views/news/CreateNews.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,7 +37,17 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
-    }
+    },
+    {
+      path: '/allNews',
+      name: 'allNews',
+      component: AllNews
+    },
+    {
+      path: '/createNews',
+      name: 'createNews',
+      component: CreateNews
+    },
   ]
 })
 
