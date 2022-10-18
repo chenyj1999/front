@@ -2,11 +2,15 @@
 <script setup>
 import axios from 'axios';
 import { ref, reactive, computed } from 'vue';
-import router from '@/router'
+
 let apiResult = reactive({
     data: [{
         "id": "",
-        "title": ""
+        "title": "",
+        "content": "",
+        "date": "",
+        "image": "",
+        "type": ""
     }]
 });
 
@@ -16,15 +20,17 @@ axios
         apiResult.data = res.data
         console.log(apiResult.data);
     })
-    .catch(function (error) { // 请求失败处理
-        console.log(error);
-    });
+    .catch((error) => console.log(error));
+
 function Delete(id) {
     axios({
         method: 'delete',
         url: 'http://127.0.0.1:8000/api/' + id
     })
-        .then((response) => alert("刪除成功"))
+        .then((res) => {
+            alert("刪除成功");
+            location.reload()
+        })
         .catch((error) => console.log(error))
 }
 </script>
@@ -41,6 +47,7 @@ function Delete(id) {
             <th>date</th>
             <th>image</th>
             <th>type</th>
+            <th>update</th>
             <th>delete</th>
         </tr>
         <tr v-for="(item,index) in apiResult.data">
@@ -50,6 +57,7 @@ function Delete(id) {
             <td>{{item.date}}</td>
             <td>{{item.image}}</td>
             <td>{{item.type}}</td>
+            <RouterLink :to="{name: 'updateNews', query: {id:item.id}}">update</RouterLink>
             <td @click="Delete(item.id)">delete</td>
         </tr>
     </table>

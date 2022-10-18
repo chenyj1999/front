@@ -2,23 +2,31 @@
 
 import axios from 'axios';
 import { ref, reactive, computed } from 'vue';
+import router from '@/router'
 
-const title = ref('');
-const content = ref('');
-const date = ref('');
-const image = ref('');
-const type = ref('');
+let apiResult = reactive({
+    data: [{
+        "id": "",
+        "title": "",
+        "content": "",
+        "date": "",
+        "image": "",
+        "type": ""
+    }]
+});
 
-console.log("createview")
 function post() {
     axios.post('http://127.0.0.1:8000/api', {
-        title: title.value,
-        content: content.value,
-        date: date.value,
-        image: image.value,
-        type: type.value,
+        title: apiResult.data.title,
+        content: apiResult.data.content,
+        date: apiResult.data.date,
+        image: apiResult.data.image,
+        type: apiResult.data.type,
     })
-        .then((response) => alert("新增成功"))
+        .then((res) => {
+            alert("新增成功");
+            router.replace({ path: '/allNews' });
+        })
         .catch((error) => console.log(error))
 }
 
@@ -28,27 +36,27 @@ function post() {
 
 <template>
     <div class="create">
-        <form action="" method="post" enctype="multipart/form-data" @submit.prevent="submitForm">
+        <form action="" method="post" enctype="multipart/form-data" @submit.prevent="post">
 
             <div class="field">
                 <label for="">標題</label>
-                <input type="text" name="title" v-model="title">
+                <input type="text" name="title" v-model="apiResult.data.title">
             </div>
             <div class="field">
                 <label for="">內文</label>
-                <textarea name="content" cols="30" rows="10" v-model="content"></textarea>
+                <textarea name="content" cols="30" rows="10" v-model="apiResult.data.content"></textarea>
             </div>
             <div class="field">
                 <label for="">日期</label>
-                <input type="text" name="date" v-model="date">
+                <input type="text" name="date" v-model="apiResult.data.date">
             </div>
             <div class="field">
                 <label for="">圖片</label>
-                <input type="text" name="image" v-model="image">
+                <input type="text" name="image" v-model="apiResult.data.image">
             </div>
             <div class="field">
                 <label for="">類型</label>
-                <input type="text" name="type" v-model="type">
+                <input type="text" name="type" v-model="apiResult.data.type">
             </div>
             <!--<label for="image" class="block text-sm leading-5 font-medium text-gray-700">
                 圖片上傳
@@ -56,7 +64,7 @@ function post() {
             </label>-->
 
             <div class="actions">
-                <button type="submit" @click="post">新增文章</button>
+                <button type="submit">新增文章</button>
             </div>
 
         </form>
