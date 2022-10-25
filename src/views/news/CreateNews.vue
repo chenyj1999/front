@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 import { ref, reactive, computed } from 'vue';
-import router from '@/router'
+import router from '@/router';
 
 let apiResult = reactive({
     data: [{
@@ -16,18 +16,22 @@ let apiResult = reactive({
 });
 
 function post() {
+    const file = this.$refs.fileInput.files[0]
     axios.post('http://127.0.0.1:8000/api', {
         title: apiResult.data.title,
         content: apiResult.data.content,
         date: apiResult.data.date,
-        image: apiResult.data.image,
+        image: file,
         type: apiResult.data.type,
     })
         .then((res) => {
             alert("新增成功");
             router.replace({ path: '/allNews' });
         })
-        .catch((error) => console.log(error))
+        .catch((error) => {
+            console.log(error);
+            console.log(image.value);
+        })
 }
 
 
@@ -48,15 +52,23 @@ function post() {
             </div>
             <div class="field">
                 <label for="">日期</label>
-                <input type="text" name="date" v-model="apiResult.data.date">
+                <input type="date" name="date" v-model="apiResult.data.date">
             </div>
             <div class="field">
                 <label for="">圖片</label>
-                <input type="text" name="image" v-model="apiResult.data.image">
+                <input type="file" name="image">
             </div>
             <div class="field">
                 <label for="">類型</label>
                 <input type="text" name="type" v-model="apiResult.data.type">
+                <!--
+                    <select v-model="selected">
+                    <option disabled value="">Please select one</option>
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                    </select>
+                -->
             </div>
             <!--<label for="image" class="block text-sm leading-5 font-medium text-gray-700">
                 圖片上傳
