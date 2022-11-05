@@ -6,7 +6,6 @@ import router from '@/router';
 
 let apiResult = reactive({
     data: [{
-        "id": "",
         "title": "",
         "content": "",
         "date": "",
@@ -16,12 +15,11 @@ let apiResult = reactive({
 });
 
 function post() {
-    const file = this.$refs.fileInput.files[0]
     axios.post('http://127.0.0.1:8000/api', {
         title: apiResult.data.title,
         content: apiResult.data.content,
         date: apiResult.data.date,
-        image: file,
+        image: apiResult.data.image,
         type: apiResult.data.type,
     })
         .then((res) => {
@@ -56,8 +54,12 @@ function post() {
             </div>
             <div class="field">
                 <label for="">圖片</label>
-                <input type="file" name="image">
+                <input type="text" name="image" v-model="apiResult.data.image">
             </div>
+            <!--<div class="field">
+                <label for="">圖片</label>
+                <input type="file" name="image">
+            </div>-->
             <div class="field">
                 <label for="">類型</label>
                 <input type="text" name="type" v-model="apiResult.data.type">
