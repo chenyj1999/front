@@ -10,6 +10,7 @@ import HelloWorld from './components/HelloWorld.vue'
       <RouterLink to="/create">Create_test</RouterLink>
       <RouterLink to="/allnews">News</RouterLink>
       <RouterLink to="/createnews">CreateNews</RouterLink>
+      <RouterLink to="/allevent">AllEvent</RouterLink>
       <!--<RouterLink to="/home">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>-->
     </nav>

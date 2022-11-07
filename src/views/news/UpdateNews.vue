@@ -19,7 +19,7 @@ let apiResult = reactive({
     }]
 });
 
-axios.get('http://127.0.0.1:8000/api/' + idResult)
+axios.get('http://127.0.0.1/foundation_laravel/public/api/news/' + idResult)
     .then((res) => {
         apiResult.data = res.data
         console.log(response)
@@ -27,7 +27,7 @@ axios.get('http://127.0.0.1:8000/api/' + idResult)
     .catch((error) => console.log(error))
 
 function Update() {
-    axios.put('http://127.0.0.1:8000/api/' + idResult, {
+    axios.put('http://127.0.0.1/foundation_laravel/public/api/news/' + idResult, {
         title: apiResult.data.title,
         content: apiResult.data.content,
         date: apiResult.data.date,

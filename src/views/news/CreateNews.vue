@@ -14,8 +14,8 @@ let apiResult = reactive({
     }]
 });
 
-function post() {
-    axios.post('http://127.0.0.1:8000/api', {
+/*function post() {
+    axios.post('http://127.0.0.1/foundation_laravel/public/api/news', {
         title: apiResult.data.title,
         content: apiResult.data.content,
         date: apiResult.data.date,
@@ -28,8 +28,14 @@ function post() {
         })
         .catch((error) => {
             console.log(error);
-            console.log(image.value);
+            //console.log(image.value);
         })
+}*/
+
+
+
+function post(e) {
+    console.log(e.target.files[0]);
 }
 
 
@@ -54,23 +60,18 @@ function post() {
             </div>
             <div class="field">
                 <label for="">圖片</label>
-                <input type="text" name="image" v-model="apiResult.data.image">
+                <!--<input type="text" name="image" v-model="apiResult.data.image">-->
+                <input type="file" name="image" id="image" @change="post">
             </div>
-            <!--<div class="field">
-                <label for="">圖片</label>
-                <input type="file" name="image">
-            </div>-->
             <div class="field">
                 <label for="">類型</label>
-                <input type="text" name="type" v-model="apiResult.data.type">
-                <!--
-                    <select v-model="selected">
-                    <option disabled value="">Please select one</option>
-                    <option>A</option>
-                    <option>B</option>
-                    <option>C</option>
-                    </select>
-                -->
+                <!--<input type="text" name="type" v-model="apiResult.data.type">-->
+                <select v-model="apiResult.data.type">
+                    <option disabled value="">請選擇</option>
+                    <option value="green">環保</option>
+                    <option value="care">長照</option>
+                    <option value="build">建築</option>
+                </select>
             </div>
             <!--<label for="image" class="block text-sm leading-5 font-medium text-gray-700">
                 圖片上傳
