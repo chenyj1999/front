@@ -14,7 +14,7 @@ let apiResult = reactive({
     }]
 });
 
-/*function post() {
+function post() {
     axios.post('http://127.0.0.1/foundation_laravel/public/api/news', {
         title: apiResult.data.title,
         content: apiResult.data.content,
@@ -30,14 +30,15 @@ let apiResult = reactive({
             console.log(error);
             //console.log(image.value);
         })
-}*/
 
-
-
-function post(e) {
-    console.log(e.target.files[0]);
+    //console.log(apiResult.data.image);
 }
 
+function post1(event) {
+    console.log(event.target.files[0]);
+    this.image = event.target.files[0];
+    apiResult.data.image = this.image;
+}
 
 
 </script>
@@ -61,7 +62,7 @@ function post(e) {
             <div class="field">
                 <label for="">圖片</label>
                 <!--<input type="text" name="image" v-model="apiResult.data.image">-->
-                <input type="file" name="image" id="image" @change="post">
+                <input type="file" name="image" id="image" @change="post1($event)">
             </div>
             <div class="field">
                 <label for="">類型</label>
@@ -72,10 +73,6 @@ function post(e) {
                     <option value="build">建築</option>
                 </select>
             </div>
-            <!--<label for="image" class="block text-sm leading-5 font-medium text-gray-700">
-                圖片上傳
-                <input type="file" name="image">
-            </label>-->
 
             <div class="actions">
                 <button type="submit">新增</button>

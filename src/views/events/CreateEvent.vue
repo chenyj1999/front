@@ -20,7 +20,7 @@ let apiResult = reactive({
 
 let typeResult = reactive({
     data: [{
-        "type": "text",
+        "type": "",
     }]
 });
 
