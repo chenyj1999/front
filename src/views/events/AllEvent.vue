@@ -38,7 +38,6 @@ function Delete(id) {
 }
 </script>
 
-
 <template>
 
     <table style="margin-top:20px;">

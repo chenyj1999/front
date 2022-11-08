@@ -75,7 +75,6 @@ function Update() {
         <div class="field">
             <label for="">圖片</label>
             <input type="text" name="image" v-model="apiResult.data.image">
-            <!--<input type="file" name="image" id="image" @change="post">-->
         </div>
         <div class="field">
             <label for="">連結</label>

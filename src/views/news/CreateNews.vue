@@ -65,7 +65,6 @@ function post(e) {
             </div>
             <div class="field">
                 <label for="">類型</label>
-                <!--<input type="text" name="type" v-model="apiResult.data.type">-->
                 <select v-model="apiResult.data.type">
                     <option disabled value="">請選擇</option>
                     <option value="green">環保</option>

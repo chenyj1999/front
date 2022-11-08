@@ -69,10 +69,6 @@ function Update() {
             <label for="">類型</label>
             <input type="text" name="type" v-model="apiResult.data.type">
         </div>
-        <!--<label for="image" class="block text-sm leading-5 font-medium text-gray-700">
-                圖片上傳
-                <input type="file" name="image">
-            </label>-->
 
         <div class="actions">
             <button type="submit">更新</button>
