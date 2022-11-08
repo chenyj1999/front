@@ -7,38 +7,41 @@ import { useRoute } from 'vue-router';
 
 const route = useRoute();
 const idResult = route.query.id;
-
 let apiResult = reactive({
     data: [{
-        "id": "",
         "title": "",
         "content": "",
-        "date": "",
+        "start_date": "",
+        "end_date": "",
+        "event_date": "",
         "image": "",
-        "type": ""
+        "link": "",
+        "created_at": "",
     }]
 });
 
-axios.get('http://127.0.0.1/foundation_laravel/public/api/news/' + idResult)
+axios.get('http://127.0.0.1/foundation_laravel/public/api/event/' + idResult)
     .then((res) => {
         apiResult.data = res.data
-        console.log(response)
+        console.log(res)
     })
     .catch((error) => console.log(error))
 
 function Update() {
-    axios.put('http://127.0.0.1/foundation_laravel/public/api/news/' + idResult, {
+    axios.put('http://127.0.0.1/foundation_laravel/public/api/event/' + idResult, {
         title: apiResult.data.title,
         content: apiResult.data.content,
-        date: apiResult.data.date,
+        start_date: apiResult.data.start_date,
+        end_date: apiResult.data.end_date,
+        event_date: apiResult.data.event_date,
         image: apiResult.data.image,
-        type: apiResult.data.type,
+        link: apiResult.data.link,
     })
         .then((res) => {
             apiResult.data = res.data;
-            alert("更新成功");
-            router.push({ path: 'AllNews' })
-            console.log(response)
+            alert("修改成功");
+            router.push({ path: 'AllEvent' })
+            console.log(res)
         })
         .catch((error) => console.log(error))
 }
@@ -58,24 +61,29 @@ function Update() {
             <textarea name="content" cols="30" rows="10" v-model="apiResult.data.content"></textarea>
         </div>
         <div class="field">
-            <label for="">日期</label>
-            <input type="text" name="date" v-model="apiResult.data.date">
+            <label for="">報名起始日期：</label>
+            <input type="date" name="start_date" v-model="apiResult.data.start_date">
+        </div>
+        <div class="field">
+            <label for="">報名結束日期：</label>
+            <input type="date" name="end_date" v-model="apiResult.data.end_date">
+        </div>
+        <div class="field">
+            <label for="">活動日期：</label>
+            <input type="date" name="event_date" v-model="apiResult.data.event_date">
         </div>
         <div class="field">
             <label for="">圖片</label>
             <input type="text" name="image" v-model="apiResult.data.image">
+            <!--<input type="file" name="image" id="image" @change="post">-->
         </div>
         <div class="field">
-            <label for="">類型</label>
-            <input type="text" name="type" v-model="apiResult.data.type">
+            <label for="">連結</label>
+            <input type="text" name="link" v-model="apiResult.data.link">
         </div>
-        <!--<label for="image" class="block text-sm leading-5 font-medium text-gray-700">
-                圖片上傳
-                <input type="file" name="image">
-            </label>-->
 
         <div class="actions">
-            <button type="submit">更新</button>
+            <button type="submit">修改活動</button>
         </div>
 
     </form>

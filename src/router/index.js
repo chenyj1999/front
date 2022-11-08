@@ -7,6 +7,8 @@ import AllNews from '../views/news/AllNews.vue'
 import CreateNews from '../views/news/CreateNews.vue'
 import UpdateNews from '../views/news/UpdateNews.vue'
 import AllEvent from '../views/events/AllEvent.vue'
+import CreateEvent from '../views/events/CreateEvent.vue'
+import UpdateEvent from '../views/events/UpdateEvent.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -59,6 +61,16 @@ const router = createRouter({
       path: '/allEvent',
       name: 'allEvent',
       component: AllEvent
+    },
+    {
+      path: '/createEvent',
+      name: 'createEvent',
+      component: CreateEvent
+    },
+    {
+      path: '/updateEvent',
+      name: 'updateEvent',
+      component: UpdateEvent
     },
   ]
 })

@@ -38,19 +38,17 @@ function Delete(id) {
 
 
 <template>
-    {{ apiResult.data }}
-
     <table style="margin-top:20px;">
         <tr>
             <th>id</th>
-            <th>title</th>
-            <th>content</th>
-            <th>date</th>
-            <th>image</th>
-            <th>type</th>
-            <th>created_at</th>
-            <th>update</th>
-            <th>delete</th>
+            <th>標題</th>
+            <th>內文</th>
+            <th>日期</th>
+            <th>圖片路徑</th>
+            <th>類別</th>
+            <th>建立日期</th>
+            <th>更新</th>
+            <th>刪除</th>
         </tr>
         <tr v-for="(item, index) in apiResult.data">
             <td>{{ item.id }}</td>
@@ -60,9 +58,12 @@ function Delete(id) {
             <td>{{ item.image }}</td>
             <td>{{ item.type }}</td>
             <td>{{ item.created_at }}</td>
-            <RouterLink :to="{ name: 'updateNews', query: { id: item.id } }">update</RouterLink>
-            <td @click="Delete(item.id)">delete</td>
+            <td><RouterLink :to="{ name: 'updateNews', query: { id: item.id } }">更新</RouterLink></td>
+            <td @click="Delete(item.id)">刪除</td>
         </tr>
     </table>
 </template>
+
+<style scoped>
+</style>
 

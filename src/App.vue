@@ -1,18 +1,39 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+
+function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
 </script>
 
 <template>
   <header>
     <nav>
-      <RouterLink to="/all">Index_test</RouterLink>
-      <RouterLink to="/create">Create_test</RouterLink>
-      <RouterLink to="/allnews">News</RouterLink>
-      <RouterLink to="/createnews">CreateNews</RouterLink>
-      <RouterLink to="/allevent">AllEvent</RouterLink>
-      <!--<RouterLink to="/home">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>-->
+      <ul>
+        <li class="dropdown">
+          最新消息
+          <div class="dropdown-content" style="left:0;">
+            <RouterLink to="/allnews">最新消息</RouterLink>
+            <RouterLink to="/createnews">新增最新消息</RouterLink>
+          </div>
+        </li>
+        <li class="dropdown">
+          活動
+          <div class="dropdown-content" style="left:0;">
+            <RouterLink to="/allevent">活動</RouterLink>
+            <RouterLink to="/createevent">新增活動</RouterLink>
+          </div>
+        </li>
+      </ul>
+      <a href="javascript:void(0);" class="icon" @click="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
     </nav>
   </header>
 
@@ -20,64 +41,83 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
 }
 
-.logo {
+li {
+  float: left;
+}
+
+li a {
   display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
+  color: #666;
   text-align: center;
-  margin-top: 2rem;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+li a:hover:not(.active) {
+  background-color: #ddd;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+li a.active {
+  color: #666;
+  background-color: #ddd;
 }
 
-nav a {
+.icon {
+  display: none;
+}
+
+/*@media (max-width:800px) {
+  #myLinks {
+    display: none;
+  }
+
+  .icon {
+    display: block;
+    float: right;
+  }
+}*/
+
+
+.dropdown {
+  padding: 14px 16px;
+  position: relative;
   display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
 }
 
-nav a:first-of-type {
-  border: 0;
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
-  nav {
-    text-align: left;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.dropdown:hover {
+  background-color: #ddd;
 }
 </style>
