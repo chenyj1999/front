@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AllView from '../views/AllView.vue'
 import CreateView from '../views/CreateView.vue'
@@ -11,7 +11,7 @@ import CreateEvent from '../views/events/CreateEvent.vue'
 import UpdateEvent from '../views/events/UpdateEvent.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/all',
