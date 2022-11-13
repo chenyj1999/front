@@ -2,20 +2,12 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 
-function myFunction() {
-  var x = document.getElementById("myLinks");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
-  }
-}
 </script>
 
 <template>
   <header>
     <nav>
-      <ul>
+      <ul class="nav nav-tabs">
         <li class="dropdown">
           最新消息
           <div class="dropdown-content" style="left:0;">
@@ -30,66 +22,50 @@ function myFunction() {
             <RouterLink to="/createevent">新增活動</RouterLink>
           </div>
         </li>
+        <li>
+        </li>
+        <li>
+        </li>
       </ul>
-      <a href="javascript:void(0);" class="icon" @click="myFunction()">
-        <i class="fa fa-bars"></i>
-      </a>
     </nav>
   </header>
+  <div class="box">
+    <RouterView />
+  </div>
 
-  <RouterView />
 </template>
 
 <style scoped>
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  border: 1px solid #e7e7e7;
-  background-color: #f3f3f3;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: #666;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover:not(.active) {
-  background-color: #ddd;
-}
-
-li a.active {
-  color: #666;
-  background-color: #ddd;
-}
-
-.icon {
-  display: none;
-}
-
 /*@media (max-width:800px) {
   #myLinks {
     display: none;
   }
 
-  .icon {
+  .icon { 
     display: block;
     float: right;
   }
 }*/
+ul {
+  padding: 0px;
+  text-align: center;
+  border-bottom: solid 3px #eee;
+  margin: 0px 50px;
+}
 
+li {
+  width: 25%;
+  display: inline-block;
+}
+
+.box {
+  padding: 20px 80px;
+}
 
 .dropdown {
   padding: 14px 16px;
   position: relative;
-  display: inline-block;
+
 }
 
 .dropdown-content {
@@ -100,6 +76,7 @@ li a.active {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  top: 45px;
 }
 
 .dropdown-content a {

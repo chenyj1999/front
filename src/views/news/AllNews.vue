@@ -55,15 +55,18 @@ function Delete(id) {
             <td>{{ item.title }}</td>
             <td>{{ item.content }}</td>
             <td>{{ item.date }}</td>
-            <td>{{ item.image }}</td>
+            <td v-if="Date.parse(item.date) < new Date()">{{ item.image }}</td>
             <td>{{ item.type }}</td>
             <td>{{ item.created_at }}</td>
-            <td><RouterLink :to="{ name: 'updateNews', query: { id: item.id } }">更新</RouterLink></td>
+            <td>
+                <RouterLink :to="{ name: 'updateNews', query: { id: item.id } }">更新</RouterLink>
+            </td>
             <td @click="Delete(item.id)">刪除</td>
         </tr>
     </table>
 </template>
 
 <style scoped>
+
 </style>
 

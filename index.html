@@ -22,12 +22,43 @@
     td {
       padding: 5px 10px;
     }
+
+    .header-index {
+      background-color: black;
+      height: 50vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header-index>h1 {
+      color: white;
+      font-size: 40px;
+    }
+
+    #app {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 1px solid rgba(0, 0, 0, .125);
+      border-radius: 0.25rem;
+      box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+      margin-right: auto;
+      margin-left: auto;
+      margin-top: -120px;
+    }
   </style>
 </head>
 
 <body>
+  <header class="header-index">
+    <h1>管理系統</h1>
+  </header>
   <div id="app">
-
   </div>
   <script type="module" src="/src/main.js"></script>
 </body>
