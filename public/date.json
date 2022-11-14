@@ -1,0 +1,55 @@
+[
+    {
+        "id": 1,
+        "exam": [
+            "chinese",
+            "english",
+            "science"
+        ],
+        "name": "Jack",
+        "age": 23,
+        "subject": "mi"
+    },
+    {
+        "id": 2,
+        "exam": [
+            "chinese",
+            "english",
+            "science",
+            "cook"
+        ],
+        "name": "Adam",
+        "age": 21,
+        "subject": "mi"
+    },
+    {
+        "id": 3,
+        "exam": [
+            "chinese",
+            "science"
+        ],
+        "name": "Jamie",
+        "age": 24,
+        "subject": "mi"
+    },
+    {
+        "id": 4,
+        "exam": [
+            "english",
+            "science"
+        ],
+        "name": "Wells",
+        "age": 25,
+        "subject": "mi"
+    },
+    {
+        "id": 5,
+        "exam": [
+            "chinese",
+            "english"
+        ],
+        "name": "Jack",
+        "age": 26,
+        "subject": "mi"
+    }
+]

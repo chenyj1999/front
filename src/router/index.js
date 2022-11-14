@@ -14,7 +14,7 @@ const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: '/all',
       name: 'all',
       component: AllView
     },
@@ -43,7 +43,7 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: '/allNews',
+      path: '/',
       name: 'allNews',
       component: AllNews
     },

@@ -14,12 +14,6 @@ let apiResult = reactive({
     }]
 });
 
-let imgResult = reactive({
-    data: [{
-        "image": ""
-    }]
-});
-
 function post() {
     axios.post('http://127.0.0.1/foundation_laravel/public/api/news', {
         title: apiResult.data.title,
@@ -30,19 +24,16 @@ function post() {
     })
         .then((res) => {
             alert("新增成功");
-            router.replace({ path: '/allNews' });
+            router.replace({ path: '/' });
         })
         .catch((error) => {
             console.log(error);
-            //console.log(image.value);
         })
-
-    //console.log(apiResult.data.image);
 }
 
 function post1(event) {
     console.log(event.target.files[0]);
-    imgResult.data.image = event.target.files[0].name;
+    imgResult.data.image = event.target.files[0];
 }
 
 
@@ -50,7 +41,7 @@ function post1(event) {
 
 <template>
     <div class="create">
-        <form action="" method="post" enctype="multipart/form-data" @submit.prevent="post">
+        <form method="post" enctype="multipart/form-data" @submit.prevent="post">
 
             <div class="row">
                 <label for="">標題：</label>
