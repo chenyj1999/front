@@ -73,4 +73,5 @@ function Delete(id) {
 </template>
 
 <style scoped>
+
 </style>

@@ -14,7 +14,7 @@ const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/all',
+      path: '/',
       name: 'all',
       component: AllView
     },

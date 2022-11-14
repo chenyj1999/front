@@ -1,8 +1,49 @@
 @import "./base.css";
 
+table {
+  border-collapse: collapse;
+  text-align: center;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 5px 10px;
+}
+
+.header-index {
+  background-color: #456ea8;
+  height: 50vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.header-index>h1 {
+  color: white;
+  font-size: 40px;
+}
+
 #app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: 2rem 2rem 1rem 1rem;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: -100px;
+  margin-bottom: 35px;
   max-width: 1280px;
-  
   /*padding: 2rem;*/
   padding: 25px 0px;
   font-weight: normal;
@@ -14,6 +55,90 @@ a,
   /*color: hsla(160, 100%, 37%, 1);*/
   color: black;
   transition: 0.4s;
+}
+
+.row {
+  margin: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+label {
+  text-align: left;
+  width: 30%;
+}
+
+form {
+  margin: auto;
+  color: rgb(50, 50, 50);
+  text-align: center;
+  padding: 20px;
+}
+
+input {
+  border: 0;
+  background-image: linear-gradient(#424242, #424242), linear-gradient(#d2d2d2, #d2d2d2);
+  background-size: 0 2px, 100% 1px;
+  background-repeat: no-repeat;
+  background-position: center bottom, center calc(100% - 1px);
+  background-color: transparent;
+  transition: background 0s ease-out;
+  float: none;
+  box-shadow: none;
+  border-radius: 0;
+  width: 50%;
+}
+
+select {
+  width: 50%;
+}
+
+textarea {
+  max-width: 50%;
+}
+
+table {
+  width: 100%;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #052D63;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
 }
 
 @media (hover: hover) {
@@ -28,9 +153,9 @@ a,
     place-items: center;
   }
 
-  #app {
+  /*#app {
     display: grid;
-    /*grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;*/
-  }
+    grid-template-columns: 1fr 1fr;
+    padding: 0 2rem;
+  }*/
 }

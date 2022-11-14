@@ -6,57 +6,49 @@
   <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vite App</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <style>
-    table {
-      border-collapse: collapse;
-      text-align: center;
+    .img-logo {
+      width: 100%;
     }
 
-    table,
-    th,
-    td {
-      border: 1px solid black;
+    header>a {
+      width: 200px;
+      height: 50px;
+      position: absolute;
+      top: 20px;
+      left: 30px;
     }
 
-    th,
-    td {
-      padding: 5px 10px;
+    .img-L {
+      width: 70%;
+      position: absolute;
+      top: -55px;
+      left: -130px;
     }
 
-    .header-index {
-      background-color: black;
-      height: 50vh;
-      width: 100vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .img-R {
+      width: 70%;
+      position: absolute;
+      top: 100px;
+      right: -125px;
     }
 
-    .header-index>h1 {
-      color: white;
-      font-size: 40px;
-    }
-
-    #app {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-      background-color: #fff;
-      background-clip: border-box;
-      border: 1px solid rgba(0, 0, 0, .125);
-      border-radius: 0.25rem;
-      box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
-      margin-right: auto;
-      margin-left: auto;
-      margin-top: -120px;
+    .header-box {
+      margin-top: 105px;
     }
   </style>
 </head>
 
 <body>
   <header class="header-index">
-    <h1>管理系統</h1>
+    <a href="https://fzios210.github.io/foundation/index.html"><img src="/src/assets/fe.png" class="img-logo"></a>
+
+    <div class="header-box">
+      <img src="/src/assets/border-L.png" class="img-L">
+      <h1 style="text-align:center;line-height: 70px;color: white;">徐元智先生紀念基金會官網<br />管理系統</h1>
+      <img src="/src/assets/border-R.png" class="img-R">
+    </div>
   </header>
   <div id="app">
   </div>

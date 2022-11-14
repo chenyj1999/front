@@ -63,8 +63,7 @@ function createlink() {
 }
 
 function gettype(event) {
-    this.type = event.target.value;
-    typeResult.data.type = this.type;
+    typeResult.data.type = event.target.value;
     console.log(typeResult.data.type);
 }
 
@@ -73,46 +72,57 @@ function gettype(event) {
 
 <template>
 
-    <select style="width: 100px;" @change="gettype($event)">
+    <!--<select style="width: 100px;" @change="gettype($event)">
         <option disabled value="">請選擇</option>
         <option value="text">活動文章</option>
         <option value="link">活動連結</option>
-    </select>
+    </select>-->
+
+    <div class="row">
+        <label for="type">類別：</label>
+        <input type="radio" name="type" id="text" value="text" v-model="type" style="width: auto;"
+            @change="gettype($event)" />
+        <label for="text" style="width: 22.5%;">活動文章</label>
+        <input type="radio" name="type" id="link" value="link" v-model="type" style="width: auto;"
+            @change="gettype($event)" />
+        <label for="link" style="width: 22.5%;">活動連結</label>
+    </div>
+
 
     <div class="create" v-if="typeResult.data.type != 'link'">
         <form action="" method="post" enctype="multipart/form-data" @submit.prevent="post">
 
-            <div class="field">
-                <label for="">標題</label>
+            <div class="row">
+                <label for="">標題：</label>
                 <input type="text" name="title" v-model="apiResult.data.title">
             </div>
-            <div class="field">
-                <label for="">內文</label>
-                <textarea name="content" cols="30" rows="10" v-model="apiResult.data.content"></textarea>
+            <div class="row">
+                <label for="">內文：</label>
+                <textarea name="content" cols="100" rows="10" v-model="apiResult.data.content"></textarea>
             </div>
-            <div class="field">
+            <div class="row">
                 <label for="">報名起始日期：</label>
                 <input type="date" name="start_date" v-model="apiResult.data.start_date">
             </div>
-            <div class="field">
+            <div class="row">
                 <label for="">報名結束日期：</label>
                 <input type="date" name="end_date" v-model="apiResult.data.end_date">
             </div>
-            <div class="field">
+            <div class="row">
                 <label for="">活動日期：</label>
                 <input type="date" name="event_date" v-model="apiResult.data.event_date">
             </div>
-            <div class="field">
-                <label for="">圖片</label>
+            <div class="row">
+                <label for="">圖片：</label>
                 <input type="text" name="image" v-model="apiResult.data.image">
             </div>
-            <div class="field">
-                <label for="">連結</label>
+            <div class="row">
+                <label for="">連結：</label>
                 <input type="text" name="link" v-model="apiResult.data.link">
             </div>
 
-            <div class="actions">
-                <button type="submit">新增活動</button>
+            <div class="row">
+                <button type="submit" class="button"><span>新增活動</span></button>
             </div>
 
         </form>
@@ -121,22 +131,22 @@ function gettype(event) {
     <div class="create" v-else>
         <form action="" method="post" enctype="multipart/form-data" @submit.prevent="createlink">
 
-            <div class="field">
-                <label for="">標題</label>
+            <div class="row">
+                <label for="">標題：</label>
                 <input type="text" name="title" v-model="apiResult.data.title">
             </div>
-            <div class="field">
-                <label for="">圖片</label>
+            <div class="row">
+                <label for="">圖片：</label>
                 <input type="text" name="image" v-model="apiResult.data.image">
                 <!--<input type="file" name="image" id="image" @change="post">-->
             </div>
-            <div class="field">
-                <label for="">連結</label>
+            <div class="row">
+                <label for="">連結：</label>
                 <input type="text" name="link" v-model="apiResult.data.link">
             </div>
 
-            <div class="actions">
-                <button type="submit">新增活動</button>
+            <div class="row">
+                <button type="submit" class="button"><span>新增活動</span></button>
             </div>
 
         </form>

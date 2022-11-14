@@ -49,29 +49,29 @@ function Update() {
 <template>
     <form action="" method="post" enctype="multipart/form-data" @submit.prevent="Update">
 
-        <div class="field">
+        <div class="row">
             <label for="">標題</label>
             <input type="text" name="title" v-model="apiResult.data.title">
         </div>
-        <div class="field">
+        <div class="row">
             <label for="">內文</label>
-            <textarea name="content" cols="30" rows="10" v-model="apiResult.data.content"></textarea>
+            <textarea name="content" cols="100" rows="10" v-model="apiResult.data.content"></textarea>
         </div>
-        <div class="field">
+        <div class="row">
             <label for="">日期</label>
-            <input type="text" name="date" v-model="apiResult.data.date">
+            <input type="date" name="date" v-model="apiResult.data.date">
         </div>
-        <div class="field">
+        <div class="row">
             <label for="">圖片</label>
             <input type="text" name="image" v-model="apiResult.data.image">
         </div>
-        <div class="field">
+        <div class="row">
             <label for="">類型</label>
             <input type="text" name="type" v-model="apiResult.data.type">
         </div>
 
-        <div class="actions">
-            <button type="submit">更新</button>
+        <div class="row">
+            <button type="submit" class="button"><span>更新</span></button>
         </div>
 
     </form>

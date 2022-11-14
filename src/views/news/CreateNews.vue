@@ -52,24 +52,24 @@ function post1(event) {
     <div class="create">
         <form action="" method="post" enctype="multipart/form-data" @submit.prevent="post">
 
-            <div class="field">
-                <label for="">標題</label>
+            <div class="row">
+                <label for="">標題：</label>
                 <input type="text" name="title" v-model="apiResult.data.title">
             </div>
-            <div class="field">
-                <label for="">內文</label>
-                <textarea name="content" cols="30" rows="10" v-model="apiResult.data.content"></textarea>
+            <div class="row">
+                <label for="">內文：</label>
+                <textarea name="content" cols="100" rows="10" v-model="apiResult.data.content"></textarea>
             </div>
-            <div class="field">
-                <label for="">日期</label>
+            <div class="row">
+                <label for="">日期：</label>
                 <input type="date" name="date" v-model="apiResult.data.date">
             </div>
-            <div class="field">
-                <label for="">圖片</label>
+            <div class="row">
+                <label for="">圖片：</label>
                 <input type="text" name="image" v-model="apiResult.data.image">
                 <!--<input type="file" name="image" id="image" @change="post1($event)">-->
             </div>
-            <div class="field">
+            <div class="row">
                 <label for="">類型</label>
                 <select v-model="apiResult.data.type">
                     <option disabled value="">請選擇</option>
@@ -80,7 +80,7 @@ function post1(event) {
             </div>
 
             <div class="actions">
-                <button type="submit">新增</button>
+                <button type="submit" class="button"><span>新增</span></button>
             </div>
 
         </form>

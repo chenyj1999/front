@@ -11,7 +11,7 @@ import HelloWorld from './components/HelloWorld.vue'
         <li class="dropdown">
           最新消息
           <div class="dropdown-content" style="left:0;">
-            <RouterLink to="/allnews">最新消息</RouterLink>
+            <RouterLink to="/">最新消息</RouterLink>
             <RouterLink to="/createnews">新增最新消息</RouterLink>
           </div>
         </li>

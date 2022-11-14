@@ -52,37 +52,37 @@ function Update() {
 <template>
     <form action="" method="post" enctype="multipart/form-data" @submit.prevent="Update">
 
-        <div class="field">
+        <div class="row">
             <label for="">標題</label>
             <input type="text" name="title" v-model="apiResult.data.title">
         </div>
-        <div class="field">
+        <div class="row">
             <label for="">內文</label>
-            <textarea name="content" cols="30" rows="10" v-model="apiResult.data.content"></textarea>
+            <textarea name="content" cols="100" rows="10" v-model="apiResult.data.content"></textarea>
         </div>
-        <div class="field">
+        <div class="row">
             <label for="">報名起始日期：</label>
             <input type="date" name="start_date" v-model="apiResult.data.start_date">
         </div>
-        <div class="field">
+        <div class="row">
             <label for="">報名結束日期：</label>
             <input type="date" name="end_date" v-model="apiResult.data.end_date">
         </div>
-        <div class="field">
+        <div class="row">
             <label for="">活動日期：</label>
             <input type="date" name="event_date" v-model="apiResult.data.event_date">
         </div>
-        <div class="field">
+        <div class="row">
             <label for="">圖片</label>
             <input type="text" name="image" v-model="apiResult.data.image">
         </div>
-        <div class="field">
+        <div class="row">
             <label for="">連結</label>
             <input type="text" name="link" v-model="apiResult.data.link">
         </div>
 
-        <div class="actions">
-            <button type="submit">修改活動</button>
+        <div class="row">
+            <button type="submit" class="button"><span>修改活動</span></button>
         </div>
 
     </form>
