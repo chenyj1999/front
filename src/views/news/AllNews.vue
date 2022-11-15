@@ -51,11 +51,12 @@ function Delete(id) {
             <th>刪除</th>
         </tr>
         <tr v-for="(item, index) in apiResult.data">
+            <!--v-if="Date.parse(item.date) < new Date()"-->
             <td>{{ item.id }}</td>
             <td>{{ item.title }}</td>
             <td>{{ item.content }}</td>
             <td>{{ item.date }}</td>
-            <td v-if="Date.parse(item.date) < new Date()">{{ item.image }}</td>
+            <td>{{ item.image }}</td>
             <td>{{ item.type }}</td>
             <td>{{ item.created_at }}</td>
             <td>

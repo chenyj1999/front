@@ -14,20 +14,15 @@ let apiResult = reactive({
     }]
 });
 
-let imgResult = reactive({
-    data: [{
-        "image": ""
-    }]
-});
-
 function post() {
-    axios.post('http://127.0.0.1/foundation_laravel/public/api/news', {
-        title: apiResult.data.title,
-        content: apiResult.data.content,
-        date: apiResult.data.date,
-        image: imgResult.data.image,
-        type: apiResult.data.type,
-    })
+    const form = new FormData()
+    form.append('title', apiResult.data.title)
+    form.append('content', apiResult.data.content)
+    form.append('date', apiResult.data.date)
+    form.append('image', apiResult.data.image)
+    form.append('type', apiResult.data.type)
+
+    axios.post('http://127.0.0.1/foundation_laravel/public/api/news', form)
         .then((res) => {
             alert("新增成功");
             router.replace({ path: '/' });
@@ -39,7 +34,7 @@ function post() {
 
 function post1(event) {
     console.log(event.target.files[0]);
-    imgResult.data.image = event.target.files[0];
+    apiResult.data.image = event.target.files[0];
 }
 
 
