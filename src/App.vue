@@ -23,8 +23,10 @@ import HelloWorld from './components/HelloWorld.vue'
           </div>
         </li>
         <li>
+          <p></p>
         </li>
         <li>
+          <RouterLink to="/login">Login</RouterLink>
         </li>
       </ul>
     </nav>

@@ -9,6 +9,7 @@ import UpdateNews from '../views/news/UpdateNews.vue'
 import AllEvent from '../views/events/AllEvent.vue'
 import CreateEvent from '../views/events/CreateEvent.vue'
 import UpdateEvent from '../views/events/UpdateEvent.vue'
+import Login from '../views/users/Login.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -71,6 +72,11 @@ const router = createRouter({
       path: '/updateEvent',
       name: 'updateEvent',
       component: UpdateEvent
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
     },
   ]
 })
