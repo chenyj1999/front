@@ -3,7 +3,6 @@
 import axios from 'axios';
 import { ref, reactive, computed } from 'vue';
 import router from '@/router';
-
 let userResult = reactive({
     data: [{
         "username": "",
@@ -13,7 +12,7 @@ let userResult = reactive({
 var text = "";
 function post() {
 
-    axios.post('http://127.0.0.1/foundation_laravel/public/api/users', {
+    axios.post('http://127.0.0.1/foundation_laravel/public/api/login', {
         username: userResult.data.username,
         password: userResult.data.password,
     })
@@ -23,6 +22,8 @@ function post() {
             text = JSON.stringify(res.data);
             if (text == "true") {
                 alert("登入成功");
+                seessionStorage.setItem("userName", userResult.data.username);
+                alert(sessionStorage.getItem('username'));
                 router.replace({ path: '/' });
             }
             else {
