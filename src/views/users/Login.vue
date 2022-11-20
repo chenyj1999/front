@@ -10,21 +10,22 @@ let userResult = reactive({
     }]
 });
 var text = "";
-function post() {
+
+if (sessionStorage.getItem("username") != null) {
+    router.replace({ path: '/' });
+}
+function login() {
 
     axios.post('http://127.0.0.1/foundation_laravel/public/api/login', {
         username: userResult.data.username,
         password: userResult.data.password,
     })
         .then((res) => {
-            alert(res.data);
-            console.log(res.data);
             text = JSON.stringify(res.data);
             if (text == "true") {
                 alert("登入成功");
-                seessionStorage.setItem("userName", userResult.data.username);
-                alert(sessionStorage.getItem('username'));
-                router.replace({ path: '/' });
+                sessionStorage.setItem("username", userResult.data.username);
+                location.reload();
             }
             else {
                 alert("登入失敗");
@@ -46,7 +47,7 @@ function post1(event) {
 
 <template>
     <div class="create">
-        <form method="post" enctype="multipart/form-data" @submit.prevent="post">
+        <form method="post" enctype="multipart/form-data" @submit.prevent="login">
 
             <div class="row">
                 <label for="">使用者：</label>

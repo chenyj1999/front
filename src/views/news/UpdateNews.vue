@@ -5,6 +5,10 @@ import { ref, reactive, computed } from 'vue';
 import router from '@/router';
 import { useRoute } from 'vue-router';
 
+if (sessionStorage.getItem("username") == null) {
+    router.replace({ path: '/login' });
+}
+
 const route = useRoute();
 const idResult = route.query.id;
 
