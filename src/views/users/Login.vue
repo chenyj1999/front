@@ -59,7 +59,7 @@ function post1(event) {
             </div>
 
             <div class="actions">
-                <button type="submit" class="button"><span>新增</span></button>
+                <button type="submit" class="button"><span>Login</span></button>
             </div>
 
         </form>

@@ -3,6 +3,7 @@
 import axios from 'axios';
 import { ref, reactive, computed } from 'vue';
 import router from '@/router';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 if (sessionStorage.getItem("username") == null) {
     router.replace({ path: '/login' });
@@ -28,18 +29,17 @@ let typeResult = reactive({
     }]
 });
 
-
-
 function post() {
-    axios.post('http://127.0.0.1/foundation_laravel/public/api/event', {
-        title: apiResult.data.title,
-        content: apiResult.data.content,
-        start_date: apiResult.data.start_date,
-        end_date: apiResult.data.end_date,
-        event_date: apiResult.data.event_date,
-        image: apiResult.data.image,
-        link: apiResult.data.link,
-    })
+    const form = new FormData()
+    form.append('title', apiResult.data.title)
+    form.append('content', apiResult.data.content)
+    form.append('start_date', apiResult.data.start_date)
+    form.append('end_date', apiResult.data.end_date)
+    form.append('event_date', apiResult.data.event_date)
+    form.append('image', apiResult.data.image)
+    form.append('link', apiResult.data.link)
+
+    axios.post('http://127.0.0.1/foundation_laravel/public/api/event', form)
         .then((res) => {
             alert("新增成功");
             router.replace({ path: '/allEvent' });
@@ -51,11 +51,12 @@ function post() {
 }
 
 function createlink() {
-    axios.post('http://127.0.0.1/foundation_laravel/public/api/event/link', {
-        title: apiResult.data.title,
-        image: apiResult.data.image,
-        link: apiResult.data.link,
-    })
+    const form = new FormData()
+    form.append('title', apiResult.data.title)
+    form.append('image', apiResult.data.image)
+    form.append('link', apiResult.data.link)
+
+    axios.post('http://127.0.0.1/foundation_laravel/public/api/event/link', form)
         .then((res) => {
             alert("新增成功");
             router.replace({ path: '/allEvent' });
@@ -71,21 +72,34 @@ function gettype(event) {
     console.log(typeResult.data.type);
 }
 
+function post1(event) {
+    console.log(event.target.files[0]);
+    apiResult.data.image = event.target.files[0];
+}
+
+/*ClassicEditor
+    .create(document.querySelector('#editor'))
+    .catch(error => {
+        console.error(error);
+    });*/
+
+/*let text = reactive({
+    data: {
+        editor: ClassicEditor,
+        editorData: '<p>Content of the editor.</p>',
+        editorConfig: {
+            // The configuration of the editor.
+        }
+    });*/
 
 </script>
 
 <template>
-
-    <!--<select style="width: 100px;" @change="gettype($event)">
-        <option disabled value="">請選擇</option>
-        <option value="text">活動文章</option>
-        <option value="link">活動連結</option>
-    </select>-->
-
+    <!--<ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>-->
     <div class="row">
         <label for="type">類別：</label>
         <input type="radio" name="type" id="text" value="text" v-model="type" style="width: auto;"
-            @change="gettype($event)" />
+            @change="gettype($event)" checked />
         <label for="text" style="width: 22.5%;">活動文章</label>
         <input type="radio" name="type" id="link" value="link" v-model="type" style="width: auto;"
             @change="gettype($event)" />
@@ -105,6 +119,14 @@ function gettype(event) {
                 <textarea name="content" cols="100" rows="10" v-model="apiResult.data.content"></textarea>
             </div>
             <div class="row">
+                <label for="">主辦單位：</label>
+                <input type="text" name="title">
+            </div>
+            <div class="row">
+                <label for="">協辦單位：</label>
+                <input type="text" name="title">
+            </div>
+            <div class="row">
                 <label for="">報名起始日期：</label>
                 <input type="date" name="start_date" v-model="apiResult.data.start_date">
             </div>
@@ -118,8 +140,16 @@ function gettype(event) {
             </div>
             <div class="row">
                 <label for="">圖片：</label>
-                <input type="text" name="image" v-model="apiResult.data.image">
+                <input type="file" name="image" id="image" @change="post1($event)">
             </div>
+            <!--<div class="row">
+                <label for="">圖片：</label>
+                <input type="file" name="image">
+            </div>
+            <div class="row">
+                <label for="">圖片：</label>
+                <input type="file" name="image">
+            </div>-->
             <div class="row">
                 <label for="">連結：</label>
                 <input type="text" name="link" v-model="apiResult.data.link">
