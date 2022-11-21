@@ -6,7 +6,7 @@ import router from '@/router';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 if (sessionStorage.getItem("username") == null) {
-    router.replace({ path: '/login' });
+    router.replace({ path: '/' });
 }
 
 let apiResult = reactive({
@@ -18,6 +18,7 @@ let apiResult = reactive({
         "event_date": "",
         "image": "",
         "link": "",
+        "type": "",
         "created_at": "",
     }]
 });
@@ -38,6 +39,7 @@ function post() {
     form.append('event_date', apiResult.data.event_date)
     form.append('image', apiResult.data.image)
     form.append('link', apiResult.data.link)
+    form.append('type', 'text')
 
     axios.post('http://127.0.0.1/foundation_laravel/public/api/event', form)
         .then((res) => {
@@ -55,6 +57,7 @@ function createlink() {
     form.append('title', apiResult.data.title)
     form.append('image', apiResult.data.image)
     form.append('link', apiResult.data.link)
+    form.append('type', 'link')
 
     axios.post('http://127.0.0.1/foundation_laravel/public/api/event/link', form)
         .then((res) => {

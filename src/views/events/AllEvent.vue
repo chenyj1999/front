@@ -4,7 +4,7 @@ import axios from 'axios';
 import { ref, reactive, computed } from 'vue';
 
 if (sessionStorage.getItem("username") == null) {
-    router.replace({ path: '/login' });
+    router.replace({ path: '/' });
 }
 
 let apiResult = reactive({

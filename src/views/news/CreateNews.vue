@@ -5,7 +5,7 @@ import { ref, reactive, computed } from 'vue';
 import router from '@/router';
 
 if (sessionStorage.getItem("username") == null) {
-    router.replace({ path: '/login' });
+    router.replace({ path: '/' });
 }
 
 let apiResult = reactive({

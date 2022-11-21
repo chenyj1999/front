@@ -26,14 +26,14 @@ function logout() {
         <li><a href=""></a></li>
         <li><a href=""></a></li>
         <li>
-          <RouterLink to="/login">Login</RouterLink>
+          <RouterLink to="/">Login</RouterLink>
         </li>
       </ul>
       <ul class="nav nav-tabs" v-else>
         <li class="dropdown">
           最新消息
           <div class="dropdown-content" style="left:0;">
-            <RouterLink to="/">最新消息</RouterLink>
+            <RouterLink to="/allnews">最新消息</RouterLink>
             <RouterLink to="/createnews">新增最新消息</RouterLink>
           </div>
         </li>

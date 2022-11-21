@@ -6,7 +6,7 @@ import router from '@/router';
 import { useRoute } from 'vue-router';
 
 if (sessionStorage.getItem("username") == null) {
-    router.replace({ path: '/login' });
+    router.replace({ path: '/' });
 }
 
 const route = useRoute();

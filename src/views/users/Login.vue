@@ -12,7 +12,7 @@ let userResult = reactive({
 var text = "";
 
 if (sessionStorage.getItem("username") != null) {
-    router.replace({ path: '/' });
+    router.replace({ path: '/allnews' });
 }
 function login() {
 

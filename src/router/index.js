@@ -44,7 +44,7 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: '/',
+      path: '/allNews',
       name: 'allNews',
       component: AllNews
     },
@@ -74,7 +74,7 @@ const router = createRouter({
       component: UpdateEvent
     },
     {
-      path: '/login',
+      path: '/',
       name: 'login',
       component: Login
     },
