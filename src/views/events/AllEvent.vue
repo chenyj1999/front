@@ -15,7 +15,7 @@ let apiResult = reactive({
         "start_date": "",
         "end_date": "",
         "event_date": "",
-        "organizer": "",
+        "host": "",
         "co_organizer": "",
         "image_1": "",
         "image_2": "",
@@ -71,7 +71,7 @@ function Delete(id) {
             <td>{{ item.start_date }}</td>
             <td>{{ item.end_date }}</td>
             <td>{{ item.event_date }}</td>
-            <td>{{ item.organizer }}</td>
+            <td>{{ item.host }}</td>
             <td>{{ item.co_organizer }}</td>
             <td>{{ item.image_1 }}</td>
             <td>{{ item.link }}</td>

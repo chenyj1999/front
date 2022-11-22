@@ -16,7 +16,7 @@ let apiResult = reactive({
         "start_date": "",
         "end_date": "",
         "event_date": "",
-        "organizer": "",
+        "host": "",
         "co_organizer": "",
         "image_1": "",
         "image_2": "",
@@ -42,7 +42,7 @@ function post() {
     form.append('start_date', apiResult.data.start_date)
     form.append('end_date', apiResult.data.end_date)
     form.append('event_date', apiResult.data.event_date)
-    form.append('organizer', apiResult.data.organizer)
+    form.append('host', apiResult.data.host)
     form.append('co_organizer', apiResult.data.co_organizer)
     form.append('image_1', apiResult.data.image_1)
     form.append('link', apiResult.data.link)
@@ -130,11 +130,11 @@ function post1(event) {
             </div>
             <div class="row">
                 <label for="">主辦單位：</label>
-                <input type="text" name="title" v-model="apiResult.data.organizer">
+                <input type="text" name="host" v-model="apiResult.data.host">
             </div>
             <div class="row">
                 <label for="">協辦單位：</label>
-                <input type="text" name="title" v-model="apiResult.data.co_organizer">
+                <input type="text" name="co_organizer" v-model="apiResult.data.co_organizer">
             </div>
             <div class="row">
                 <label for="">報名起始日期：</label>

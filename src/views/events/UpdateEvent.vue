@@ -18,8 +18,8 @@ let apiResult = reactive({
         "start_date": "",
         "end_date": "",
         "event_date": "",
-        "organizer":"",
-        "co-organizer":"",
+        "host":"",
+        "co_organizer":"",
         "image_1": "",
         "image_2": "",
         "image_3": "",
@@ -44,6 +44,8 @@ function Update() {
         start_date: apiResult.data.start_date,
         end_date: apiResult.data.end_date,
         event_date: apiResult.data.event_date,
+        host: apiResult.data.host,
+        co_organizer: apiResult.data.co_organizer,
         link: apiResult.data.link,
     })
         .then((res) => {
@@ -71,7 +73,7 @@ function Update() {
         </div>
         <div class="row">
                 <label for="">主辦單位：</label>
-                <input type="text" name="title" v-model="apiResult.data.organizer">
+                <input type="text" name="host" v-model="apiResult.data.host">
             </div>
             <div class="row">
                 <label for="">協辦單位：</label>

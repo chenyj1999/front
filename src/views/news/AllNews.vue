@@ -48,7 +48,6 @@ function Delete(id) {
             <th>標題</th>
             <th>內文</th>
             <th>日期</th>
-            <th>圖片路徑</th>
             <th>類別</th>
             <th>建立日期</th>
             <th>更新</th>
@@ -60,7 +59,6 @@ function Delete(id) {
             <td>{{ item.title }}</td>
             <td>{{ item.content }}</td>
             <td>{{ item.date }}</td>
-            <td>{{ item.image }}</td>
             <td>{{ item.type }}</td>
             <td>{{ item.created_at }}</td>
             <td>

@@ -29,7 +29,7 @@ function login() {
             }
             else {
                 alert("登入失敗");
-                router.replace({ path: '/login' });
+                router.replace({ path: '/' });
             }
         })
         .catch((error) => {
