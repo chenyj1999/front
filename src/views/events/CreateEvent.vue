@@ -16,7 +16,12 @@ let apiResult = reactive({
         "start_date": "",
         "end_date": "",
         "event_date": "",
-        "image": "",
+        "organizer": "",
+        "co_organizer": "",
+        "image_1": "",
+        "image_2": "",
+        "image_3": "",
+        "image_4": "",
         "link": "",
         "type": "",
         "created_at": "",
@@ -37,11 +42,13 @@ function post() {
     form.append('start_date', apiResult.data.start_date)
     form.append('end_date', apiResult.data.end_date)
     form.append('event_date', apiResult.data.event_date)
-    form.append('image', apiResult.data.image)
+    form.append('organizer', apiResult.data.organizer)
+    form.append('co_organizer', apiResult.data.co_organizer)
+    form.append('image_1', apiResult.data.image_1)
     form.append('link', apiResult.data.link)
     form.append('type', 'text')
 
-    axios.post('http://127.0.0.1/foundation_laravel/public/api/event', form)
+    axios.post('http://127.0.0.1/foundation/foundation_laravel/public/api/event', form)
         .then((res) => {
             alert("新增成功");
             router.replace({ path: '/allEvent' });
@@ -55,11 +62,11 @@ function post() {
 function createlink() {
     const form = new FormData()
     form.append('title', apiResult.data.title)
-    form.append('image', apiResult.data.image)
+    form.append('image_1', apiResult.data.image_1)
     form.append('link', apiResult.data.link)
     form.append('type', 'link')
 
-    axios.post('http://127.0.0.1/foundation_laravel/public/api/event/link', form)
+    axios.post('http://127.0.0.1/foundation/foundation_laravel/public/api/event/link', form)
         .then((res) => {
             alert("新增成功");
             router.replace({ path: '/allEvent' });
@@ -77,7 +84,7 @@ function gettype(event) {
 
 function post1(event) {
     console.log(event.target.files[0]);
-    apiResult.data.image = event.target.files[0];
+    apiResult.data.image_1 = event.target.files[0];
 }
 
 /*ClassicEditor
@@ -123,11 +130,11 @@ function post1(event) {
             </div>
             <div class="row">
                 <label for="">主辦單位：</label>
-                <input type="text" name="title">
+                <input type="text" name="title" v-model="apiResult.data.organizer">
             </div>
             <div class="row">
                 <label for="">協辦單位：</label>
-                <input type="text" name="title">
+                <input type="text" name="title" v-model="apiResult.data.co_organizer">
             </div>
             <div class="row">
                 <label for="">報名起始日期：</label>
@@ -143,7 +150,7 @@ function post1(event) {
             </div>
             <div class="row">
                 <label for="">圖片：</label>
-                <input type="file" name="image" id="image" @change="post1($event)">
+                <input type="file" name="image_1" id="image" @change="post1($event)">
             </div>
             <!--<div class="row">
                 <label for="">圖片：</label>
@@ -174,7 +181,7 @@ function post1(event) {
             </div>
             <div class="row">
                 <label for="">圖片：</label>
-                <input type="text" name="image" v-model="apiResult.data.image">
+                <input type="file" name="image_1" @change="post1($event)">
                 <!--<input type="file" name="image" id="image" @change="post">-->
             </div>
             <div class="row">

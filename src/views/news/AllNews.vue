@@ -20,7 +20,7 @@ let apiResult = reactive({
 });
 
 axios
-    .get("http://127.0.0.1/foundation_laravel/public/api/news")
+    .get("http://127.0.0.1/foundation/foundation_laravel/public/api/news")
     .then((res) => {
         apiResult.data = res.data
         console.log(apiResult.data);
@@ -30,7 +30,7 @@ axios
 function Delete(id) {
     axios({
         method: 'delete',
-        url: 'http://127.0.0.1/foundation_laravel/public/api/news/' + id
+        url: 'http://127.0.0.1/foundation/foundation_laravel/public/api/news/' + id
     })
         .then((res) => {
             alert("刪除成功");

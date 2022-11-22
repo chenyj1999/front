@@ -23,7 +23,7 @@ let apiResult = reactive({
     }]
 });
 
-axios.get('http://127.0.0.1/foundation_laravel/public/api/news/' + idResult)
+axios.get('http://127.0.0.1/foundation/foundation_laravel/public/api/news/' + idResult)
     .then((res) => {
         apiResult.data = res.data
         console.log(response)
@@ -31,11 +31,10 @@ axios.get('http://127.0.0.1/foundation_laravel/public/api/news/' + idResult)
     .catch((error) => console.log(error))
 
 function Update() {
-    axios.put('http://127.0.0.1/foundation_laravel/public/api/news/' + idResult, {
+    axios.put('http://127.0.0.1/foundation/foundation_laravel/public/api/news/' + idResult, {
         title: apiResult.data.title,
         content: apiResult.data.content,
         date: apiResult.data.date,
-        image: apiResult.data.image,
         type: apiResult.data.type,
     })
         .then((res) => {
@@ -64,10 +63,6 @@ function Update() {
         <div class="row">
             <label for="">日期</label>
             <input type="date" name="date" v-model="apiResult.data.date">
-        </div>
-        <div class="row">
-            <label for="">圖片</label>
-            <input type="text" name="image" v-model="apiResult.data.image">
         </div>
         <div class="row">
             <label for="">類型</label>

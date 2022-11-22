@@ -18,13 +18,19 @@ let apiResult = reactive({
         "start_date": "",
         "end_date": "",
         "event_date": "",
-        "image": "",
+        "organizer":"",
+        "co-organizer":"",
+        "image_1": "",
+        "image_2": "",
+        "image_3": "",
+        "image_4": "",
         "link": "",
+        "type": "",
         "created_at": "",
     }]
 });
 
-axios.get('http://127.0.0.1/foundation_laravel/public/api/event/' + idResult)
+axios.get('http://127.0.0.1/foundation/foundation_laravel/public/api/event/' + idResult)
     .then((res) => {
         apiResult.data = res.data
         console.log(res)
@@ -32,13 +38,12 @@ axios.get('http://127.0.0.1/foundation_laravel/public/api/event/' + idResult)
     .catch((error) => console.log(error))
 
 function Update() {
-    axios.put('http://127.0.0.1/foundation_laravel/public/api/event/' + idResult, {
+    axios.put('http://127.0.0.1/foundation/foundation_laravel/public/api/event/' + idResult, {
         title: apiResult.data.title,
         content: apiResult.data.content,
         start_date: apiResult.data.start_date,
         end_date: apiResult.data.end_date,
         event_date: apiResult.data.event_date,
-        image: apiResult.data.image,
         link: apiResult.data.link,
     })
         .then((res) => {
@@ -65,6 +70,14 @@ function Update() {
             <textarea name="content" cols="100" rows="10" v-model="apiResult.data.content"></textarea>
         </div>
         <div class="row">
+                <label for="">主辦單位：</label>
+                <input type="text" name="title" v-model="apiResult.data.organizer">
+            </div>
+            <div class="row">
+                <label for="">協辦單位：</label>
+                <input type="text" name="title" v-model="apiResult.data.co_organizer">
+            </div>
+        <div class="row">
             <label for="">報名起始日期：</label>
             <input type="date" name="start_date" v-model="apiResult.data.start_date">
         </div>
@@ -75,10 +88,6 @@ function Update() {
         <div class="row">
             <label for="">活動日期：</label>
             <input type="date" name="event_date" v-model="apiResult.data.event_date">
-        </div>
-        <div class="row">
-            <label for="">圖片</label>
-            <input type="text" name="image" v-model="apiResult.data.image">
         </div>
         <div class="row">
             <label for="">連結</label>

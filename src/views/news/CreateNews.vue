@@ -26,7 +26,7 @@ function post() {
     form.append('image', apiResult.data.image)
     form.append('type', apiResult.data.type)
 
-    axios.post('http://127.0.0.1/foundation_laravel/public/api/news', form)
+    axios.post('http://127.0.0.1/foundation/foundation_laravel/public/api/news', form)
         .then((res) => {
             alert("新增成功");
             router.replace({ path: '/' });

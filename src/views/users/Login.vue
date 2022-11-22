@@ -16,7 +16,7 @@ if (sessionStorage.getItem("username") != null) {
 }
 function login() {
 
-    axios.post('http://127.0.0.1/foundation_laravel/public/api/login', {
+    axios.post('http://127.0.0.1/foundation/foundation_laravel/public/api/login', {
         username: userResult.data.username,
         password: userResult.data.password,
     })
@@ -55,7 +55,7 @@ function post1(event) {
             </div>
             <div class="row">
                 <label for="">密碼：</label>
-                <input type="text" name="password" v-model="userResult.data.password">
+                <input type="password" name="password" v-model="userResult.data.password">
             </div>
 
             <div class="actions">
