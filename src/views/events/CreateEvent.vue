@@ -9,6 +9,9 @@ if (sessionStorage.getItem("username") == null) {
     router.replace({ path: '/' });
 }
 
+var url_event = 'http://127.0.0.1/foundation/foundation_laravel/public/api/event';
+var url_event_link = 'http://127.0.0.1/foundation/foundation_laravel/public/api/event/link';
+
 let apiResult = reactive({
     data: [{
         "title": "",
@@ -47,18 +50,26 @@ function post() {
     form.append('co_organizer', apiResult.data.co_organizer)
     form.append('address', apiResult.data.address)
     form.append('image_1', apiResult.data.image_1)
+    form.append('image_2', apiResult.data.image_2)
+    form.append('image_3', apiResult.data.image_3)
+    form.append('image_4', apiResult.data.image_4)
     form.append('link', apiResult.data.link)
     form.append('type', 'text')
-    console.log(apiResult.data);
-    axios.post('http://127.0.0.1/foundation/foundation_laravel/public/api/event', form)
-        .then((res) => {
-            alert("新增成功");
-            router.replace({ path: '/allEvent' });
-        })
-        .catch((error) => {
-            console.log(error);
-            //console.log(image.value);
-        })
+    if (apiResult.data.title == undefined || apiResult.data.content == '' || apiResult.data.start_date == undefined || apiResult.data.end_date == '' || apiResult.data.event_date == undefined) {
+        alert("請輸入");
+    }
+    else {
+        axios.post(url_event, form)
+            .then((res) => {
+                alert("新增成功");
+                router.replace({ path: '/allEvent' });
+            })
+            .catch((error) => {
+                console.log(error);
+                //console.log(image.value);
+            })
+    }
+
 }
 
 function createlink() {
@@ -67,16 +78,20 @@ function createlink() {
     form.append('image_1', apiResult.data.image_1)
     form.append('link', apiResult.data.link)
     form.append('type', 'link')
+    if (apiResult.data.title == undefined || apiResult.data.image_1 == undefined || apiResult.data.link == undefined) {
+        alert("請輸入");
+    }
+    else {
+        axios.post(url_event_link, form)
+            .then((res) => {
+                alert("新增成功");
+                router.replace({ path: '/allEvent' });
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
-    axios.post('http://127.0.0.1/foundation/foundation_laravel/public/api/event/link', form)
-        .then((res) => {
-            alert("新增成功");
-            router.replace({ path: '/allEvent' });
-        })
-        .catch((error) => {
-            console.log(error);
-            //console.log(image.value);
-        })
 }
 
 function gettype(event) {
@@ -87,6 +102,21 @@ function gettype(event) {
 function post1(event) {
     console.log(event.target.files[0]);
     apiResult.data.image_1 = event.target.files[0];
+}
+
+function post2(event) {
+    console.log(event.target.files[0]);
+    apiResult.data.image_2 = event.target.files[0];
+}
+
+function post3(event) {
+    console.log(event.target.files[0]);
+    apiResult.data.image_3 = event.target.files[0];
+}
+
+function post4(event) {
+    console.log(event.target.files[0]);
+    apiResult.data.image_4 = event.target.files[0];
 }
 
 /*ClassicEditor
@@ -156,16 +186,20 @@ function post1(event) {
             </div>
             <div class="row">
                 <label for="">圖片：</label>
-                <input type="file" name="image_1" id="image" @change="post1($event)">
-            </div>
-            <!--<div class="row">
-                <label for="">圖片：</label>
-                <input type="file" name="image">
+                <input type="file" name="image_1" @change="post1($event)">
             </div>
             <div class="row">
                 <label for="">圖片：</label>
-                <input type="file" name="image">
-            </div>-->
+                <input type="file" name="image_2" @change="post2($event)">
+            </div>
+            <div class="row">
+                <label for="">圖片：</label>
+                <input type="file" name="image_2" @change="post3($event)">
+            </div>
+            <div class="row">
+                <label for="">圖片：</label>
+                <input type="file" name="image_2" @change="post4($event)">
+            </div>
             <div class="row">
                 <label for="">連結：</label>
                 <input type="text" name="link" v-model="apiResult.data.link">

@@ -7,6 +7,8 @@ if (sessionStorage.getItem("username") == null) {
     router.replace({ path: '/' });
 }
 
+var url_news = 'http://127.0.0.1/foundation/foundation_laravel/public/api/news';
+
 let apiResult = reactive({
     data: [{
         "id": "",
@@ -20,7 +22,7 @@ let apiResult = reactive({
 });
 
 axios
-    .get("http://127.0.0.1/foundation/foundation_laravel/public/api/news")
+    .get(url_news)
     .then((res) => {
         apiResult.data = res.data
         console.log(apiResult.data);
@@ -30,7 +32,7 @@ axios
 function Delete(id) {
     axios({
         method: 'delete',
-        url: 'http://127.0.0.1/foundation/foundation_laravel/public/api/news/' + id
+        url: url_news + '/' + id
     })
         .then((res) => {
             alert("刪除成功");

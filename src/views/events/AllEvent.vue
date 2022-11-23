@@ -7,6 +7,8 @@ if (sessionStorage.getItem("username") == null) {
     router.replace({ path: '/' });
 }
 
+var url_event = 'http://127.0.0.1/foundation/foundation_laravel/public/api/event';
+
 let apiResult = reactive({
     data: [{
         "id": "",
@@ -28,7 +30,7 @@ let apiResult = reactive({
 });
 
 axios
-    .get("http://127.0.0.1/foundation/foundation_laravel/public/api/event")
+    .get(url_event)
     .then((res) => {
         apiResult.data = res.data
         console.log(apiResult.data);
@@ -38,7 +40,7 @@ axios
 function Delete(id) {
     axios({
         method: 'delete',
-        url: 'http://127.0.0.1/foundation/foundation_laravel/public/api/event/' + id
+        url: url_event + '/' + id
     })
         .then((res) => {
             alert("刪除成功");
@@ -73,7 +75,7 @@ function Delete(id) {
             <td>{{ item.event_date }}</td>
             <td>{{ item.host }}</td>
             <td>{{ item.co_organizer }}</td>
-            <td>{{ item.address}}</td>
+            <td>{{ item.address }}</td>
             <td>{{ item.link }}</td>
             <td>{{ item.created_at }}</td>
             <td v-if="item.type == 'text'">

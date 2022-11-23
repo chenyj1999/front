@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 import { useRoute } from 'vue-router';
 
 var userlist = 0;
@@ -51,31 +50,6 @@ function logout() {
           <a href="#" @click="logout">Logout</a>
         </li>
       </ul>
-      <!--<ul class="nav nav-tabs">
-        <li class="dropdown">
-          最新消息
-          <div class="dropdown-content" style="left:0;">
-            <RouterLink to="/">最新消息</RouterLink>
-            <RouterLink to="/createnews" v-if="userlist != 0">新增最新消息</RouterLink>
-          </div>
-        </li>
-        <li class="dropdown">
-          活動
-          <div class="dropdown-content" style="left:0;">
-            <RouterLink to="/allevent">活動</RouterLink>
-            <RouterLink to="/createevent" v-if="userlist != 0">新增活動</RouterLink>
-          </div>
-        </li>
-        <li>
-          <a>{{ username }}</a>
-        </li>
-        <li v-if="userlist == 0">
-          <RouterLink to="/login">Login</RouterLink>
-        </li>
-        <li v-else>
-          <a href="#" @click="logout">Logout</a>
-        </li>
-      </ul>-->
     </nav>
   </header>
   <div class="box">

@@ -8,6 +8,8 @@ if (sessionStorage.getItem("username") == null) {
     router.replace({ path: '/' });
 }
 
+var url_news = 'http://127.0.0.1/foundation/foundation_laravel/public/api/news';
+
 let apiResult = reactive({
     data: [{
         "title": "",
@@ -25,15 +27,20 @@ function post() {
     form.append('date', apiResult.data.date)
     form.append('image', apiResult.data.image)
     form.append('type', apiResult.data.type)
+    if (apiResult.data.title == undefined || apiResult.data.content == '' || apiResult.data.date == undefined || apiResult.data.image == undefined || apiResult.data.type == undefined) {
+        alert("請輸入");
+    }
+    else {
+        axios.post(url_news, form)
+            .then((res) => {
+                alert("新增成功");
+                router.replace({ path: '/' });
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
-    axios.post('http://127.0.0.1/foundation/foundation_laravel/public/api/news', form)
-        .then((res) => {
-            alert("新增成功");
-            router.replace({ path: '/' });
-        })
-        .catch((error) => {
-            console.log(error);
-        })
 }
 
 function post1(event) {

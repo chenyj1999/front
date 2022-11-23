@@ -9,6 +9,8 @@ if (sessionStorage.getItem("username") == null) {
     router.replace({ path: '/' });
 }
 
+var url_event = 'http://127.0.0.1/foundation/foundation_laravel/public/api/event/';
+
 const route = useRoute();
 const idResult = route.query.id;
 let apiResult = reactive({
@@ -31,7 +33,7 @@ let apiResult = reactive({
     }]
 });
 
-axios.get('http://127.0.0.1/foundation/foundation_laravel/public/api/event/' + idResult)
+axios.get(url_event + idResult)
     .then((res) => {
         apiResult.data = res.data
         console.log(res)
@@ -39,25 +41,32 @@ axios.get('http://127.0.0.1/foundation/foundation_laravel/public/api/event/' + i
     .catch((error) => console.log(error))
 
 function Update() {
-    axios.put('http://127.0.0.1/foundation/foundation_laravel/public/api/event/' + idResult, {
-        title: apiResult.data.title,
-        content: apiResult.data.content,
-        start_date: apiResult.data.start_date,
-        end_date: apiResult.data.end_date,
-        event_date: apiResult.data.event_date,
-        host: apiResult.data.host,
-        co_organizer: apiResult.data.co_organizer,
-        address: apiResult.data.address,
-        link: apiResult.data.link,
-    })
-        .then((res) => {
-            apiResult.data = res.data;
-            alert("修改成功");
-            router.push({ path: 'AllEvent' })
-            console.log(res)
+    if (apiResult.data.title == undefined || apiResult.data.content == '') {
+        alert("請輸入");
+    }
+    else {
+        axios.put(url_event + idResult, {
+            title: apiResult.data.title,
+            content: apiResult.data.content,
+            start_date: apiResult.data.start_date,
+            end_date: apiResult.data.end_date,
+            event_date: apiResult.data.event_date,
+            host: apiResult.data.host,
+            co_organizer: apiResult.data.co_organizer,
+            address: apiResult.data.address,
+            link: apiResult.data.link,
         })
-        .catch((error) => console.log(error))
+            .then((res) => {
+                apiResult.data = res.data;
+                alert("修改成功");
+                router.push({ path: 'AllEvent' })
+                console.log(res)
+            })
+            .catch((error) => console.log(error))
+    }
 }
+
+
 
 
 </script>
