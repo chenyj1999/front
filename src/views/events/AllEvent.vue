@@ -59,7 +59,7 @@ function Delete(id) {
             <th>活動日期</th>
             <th>主辦單位</th>
             <th>協辦單位</th>
-            <th>圖片1</th>
+            <th>地點</th>
             <th>報名連結</th>
             <th>新增日期</th>
             <th>更新</th>
@@ -73,7 +73,7 @@ function Delete(id) {
             <td>{{ item.event_date }}</td>
             <td>{{ item.host }}</td>
             <td>{{ item.co_organizer }}</td>
-            <td>{{ item.image_1 }}</td>
+            <td>{{ item.address}}</td>
             <td>{{ item.link }}</td>
             <td>{{ item.created_at }}</td>
             <td v-if="item.type == 'text'">

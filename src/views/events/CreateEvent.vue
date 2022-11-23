@@ -18,6 +18,7 @@ let apiResult = reactive({
         "event_date": "",
         "host": "",
         "co_organizer": "",
+        "address": "",
         "image_1": "",
         "image_2": "",
         "image_3": "",
@@ -44,10 +45,11 @@ function post() {
     form.append('event_date', apiResult.data.event_date)
     form.append('host', apiResult.data.host)
     form.append('co_organizer', apiResult.data.co_organizer)
+    form.append('address', apiResult.data.address)
     form.append('image_1', apiResult.data.image_1)
     form.append('link', apiResult.data.link)
     form.append('type', 'text')
-
+    console.log(apiResult.data);
     axios.post('http://127.0.0.1/foundation/foundation_laravel/public/api/event', form)
         .then((res) => {
             alert("新增成功");
@@ -147,6 +149,10 @@ function post1(event) {
             <div class="row">
                 <label for="">活動日期：</label>
                 <input type="date" name="event_date" v-model="apiResult.data.event_date">
+            </div>
+            <div class="row">
+                <label for="">活動地點：</label>
+                <input type="text" name="address" v-model="apiResult.data.address">
             </div>
             <div class="row">
                 <label for="">圖片：</label>
