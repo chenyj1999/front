@@ -4,6 +4,8 @@ import axios from 'axios';
 import { ref, reactive, computed } from 'vue';
 import router from '@/router';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { component as CKEditor } from '@ckeditor/ckeditor5-vue';
+import Editor from '../../components/Editor.vue'
 
 if (sessionStorage.getItem("username") == null) {
     router.replace({ path: '/' });
@@ -11,6 +13,21 @@ if (sessionStorage.getItem("username") == null) {
 
 var url_event = 'http://127.0.0.1/foundation/foundation_laravel/public/api/event';
 var url_event_link = 'http://127.0.0.1/foundation/foundation_laravel/public/api/event/link';
+
+const props = defineProps({
+    modelValue: String
+})
+const editordata = ref(props.modelValue || '')
+const editorConfig = reactive({
+    toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote'],
+    heading: {
+        options: [
+            { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+            { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+            { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
+        ]
+    }
+})
 
 let apiResult = reactive({
     data: [{
@@ -53,12 +70,14 @@ function post() {
     form.append('image_2', apiResult.data.image_2)
     form.append('image_3', apiResult.data.image_3)
     form.append('image_4', apiResult.data.image_4)
+    form.append('editordata', editordata.value)
     form.append('link', apiResult.data.link)
     form.append('type', 'text')
     if (apiResult.data.title == undefined || apiResult.data.content == '' || apiResult.data.start_date == undefined || apiResult.data.end_date == '' || apiResult.data.event_date == undefined) {
         alert("請輸入");
     }
     else {
+
         axios.post(url_event, form)
             .then((res) => {
                 alert("新增成功");
@@ -119,25 +138,12 @@ function post4(event) {
     apiResult.data.image_4 = event.target.files[0];
 }
 
-/*ClassicEditor
-    .create(document.querySelector('#editor'))
-    .catch(error => {
-        console.error(error);
-    });*/
-
-/*let text = reactive({
-    data: {
-        editor: ClassicEditor,
-        editorData: '<p>Content of the editor.</p>',
-        editorConfig: {
-            // The configuration of the editor.
-        }
-    });*/
 
 </script>
 
 <template>
-    <!--<ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>-->
+    <!--<Editor v-model="content" />-->
+
     <div class="row">
         <label for="type">類別：</label>
         <input type="radio" name="type" id="text" value="text" v-model="type" style="width: auto;"
@@ -199,6 +205,9 @@ function post4(event) {
             <div class="row">
                 <label for="">圖片：</label>
                 <input type="file" name="image_2" @change="post4($event)">
+            </div>
+            <div class="fg-black" style="--ckborder-radius:0.25rem;">
+                <CKEditor :editor="ClassicEditor" v-model="editordata" :config="editorConfig"></CKEditor>
             </div>
             <div class="row">
                 <label for="">連結：</label>
