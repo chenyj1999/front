@@ -64,8 +64,8 @@ function Delete(id) {
             <th>地點</th>
             <th>報名連結</th>
             <th>新增日期</th>
-            <th>更新</th>
-            <th>刪除</th>
+            <th style="min-width: 55px;padding: 10px;">更新</th>
+            <th style="min-width: 55px;padding: 10px;">刪除</th>
         </tr>
         <tr v-for="(item, index) in apiResult.data">
             <td>{{ item.id }}</td>
@@ -78,15 +78,30 @@ function Delete(id) {
             <td>{{ item.address }}</td>
             <td>{{ item.link }}</td>
             <td>{{ item.created_at }}</td>
-            <td v-if="item.type == 'text'">
-                <RouterLink :to="{ name: 'updateEvent', query: { id: item.id } }">更新</RouterLink>
+            <td style="padding: 2px 2px;" v-if="item.type == 'text'">
+                <RouterLink :to="{ name: 'updateEvent', query: { id: item.id } }"><button class="update">更新</button>
+                </RouterLink>
             </td>
             <td v-else></td>
-            <td @click="Delete(item.id)">刪除</td>
+            <td style="padding: 2px 2px;" @click="Delete(item.id)"><button class="delete">刪除</button></td>
         </tr>
     </table>
 </template>
 
 <style scoped>
+button {
+    border-radius: 10px;
+    border: 1px solid rgb(90, 90, 90);
+}
 
+.update:hover {
+    background-color: #6b9aff;
+    color: white;
+    border: none;
+}
+.delete:hover {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+}
 </style>

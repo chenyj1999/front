@@ -52,8 +52,8 @@ function Delete(id) {
             <th>日期</th>
             <th>類別</th>
             <th>建立日期</th>
-            <th>更新</th>
-            <th>刪除</th>
+            <th style="min-width: 55px;">更新</th>
+            <th style="min-width: 55px;">刪除</th>
         </tr>
         <tr v-for="(item, index) in apiResult.data">
             <!--v-if="Date.parse(item.date) < new Date()"-->
