@@ -10,25 +10,23 @@ import Editor from '../../components/Editor.vue'
 if (sessionStorage.getItem("username") == null) {
     router.replace({ path: '/' });
 }
-
-var url_event = 'http://127.0.0.1/foundation/foundation_laravel/public/api/event';
-var url_event_link = 'http://127.0.0.1/foundation/foundation_laravel/public/api/event/link';
-
 const props = defineProps({
     modelValue: String
 })
-const editordata = ref(props.modelValue || '')
+const editordata = ref('')
 const editorConfig = reactive({
-    toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote'],
+    toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'uploadImage'],
     heading: {
         options: [
             { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
             { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
             { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
         ]
-    }
+    },
 })
 
+var url_event = 'http://127.0.0.1/foundation/foundation_laravel/public/api/event';
+var url_event_link = 'http://127.0.0.1/foundation/foundation_laravel/public/api/event/link';
 let apiResult = reactive({
     data: [{
         "title": "",
@@ -48,14 +46,11 @@ let apiResult = reactive({
         "created_at": "",
     }]
 });
-
-
 let typeResult = reactive({
     data: [{
         "type": "",
     }]
 });
-
 function post() {
     const form = new FormData()
     form.append('title', apiResult.data.title)
@@ -77,7 +72,6 @@ function post() {
         alert("請輸入");
     }
     else {
-
         axios.post(url_event, form)
             .then((res) => {
                 alert("新增成功");
