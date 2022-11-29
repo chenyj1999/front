@@ -7,10 +7,10 @@
     "preview": "vite preview --port 4173"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-alignment": "^35.3.2",
     "@ckeditor/ckeditor5-build-classic": "^35.3.2",
     "@ckeditor/ckeditor5-easy-image": "^35.3.2",
     "@ckeditor/ckeditor5-vue": "^4.0.1",
-    "@ckeditor/ckeditor5-vue2": "^3.0.1",
     "axios": "^0.27.2",
     "moment": "^2.29.4",
     "vue": "^3.2.38",

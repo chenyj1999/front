@@ -3,8 +3,8 @@
 import axios from 'axios';
 import { ref, reactive, computed } from 'vue';
 import router from '@/router';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { component as CKEditor } from '@ckeditor/ckeditor5-vue';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Editor from '../../components/Editor.vue'
 
 if (sessionStorage.getItem("username") == null) {
@@ -13,14 +13,37 @@ if (sessionStorage.getItem("username") == null) {
 const props = defineProps({
     modelValue: String
 })
+const editor = ClassicEditor;
 const editordata = ref('')
 const editorConfig = reactive({
-    toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'uploadImage'],
+    toolbar: {
+        items: [
+            'heading',
+            'bold',
+            'italic',
+            'link',
+            '|',
+            'bulletedList',
+            'numberedList',
+            'blockQuote',
+            'insertTable',
+            'mediaEmbed',
+            '|',
+            'undo',
+            'redo',
+        ]
+    },
     heading: {
         options: [
             { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
             { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
             { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
+        ]
+    },
+    alignment: {
+        options: [
+            { name: 'left', className: 'my-align-left' },
+            { name: 'right', className: 'my-align-right' }
         ]
     },
 })
@@ -185,26 +208,29 @@ function post4(event) {
                 <input type="text" name="address" v-model="apiResult.data.address">
             </div>
             <div class="row">
-                <label for="">圖片：</label>
+                <label for="">輪播圖1：</label>
                 <input type="file" name="image_1" @change="post1($event)">
             </div>
             <div class="row">
-                <label for="">圖片：</label>
+                <label for="">輪播圖2：</label>
                 <input type="file" name="image_2" @change="post2($event)">
             </div>
             <div class="row">
-                <label for="">圖片：</label>
+                <label for="">輪播圖3：</label>
                 <input type="file" name="image_2" @change="post3($event)">
             </div>
             <div class="row">
-                <label for="">圖片：</label>
+                <label for="">輪播圖4：</label>
                 <input type="file" name="image_2" @change="post4($event)">
             </div>
-            <div class="fg-black" style="--ckborder-radius:0.25rem;">
-                <CKEditor :editor="ClassicEditor" v-model="editordata" :config="editorConfig"></CKEditor>
+            <div class="row">
+                <label for="">文章內容：</label>
+                <div class="fg-black" style="--ckborder-radius:0.25rem;width: 50%;">
+                    <CKEditor :editor="editor" v-model="editordata" :config="editorConfig"></CKEditor>
+                </div>
             </div>
             <div class="row">
-                <label for="">連結：</label>
+                <label for="">活動報名連結：</label>
                 <input type="text" name="link" v-model="apiResult.data.link">
             </div>
 
