@@ -27,6 +27,7 @@ const editorConfig = reactive({
             'numberedList',
             'blockQuote',
             'insertTable',
+            'imageUpload',
             'mediaEmbed',
             '|',
             'undo',
