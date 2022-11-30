@@ -9,8 +9,8 @@ if (sessionStorage.getItem("username") == null) {
     router.replace({ path: '/' });
 }
 
-const editor = ClassicEditor;
-const editordata = ref('')
+//const editor = ClassicEditor;
+const editordata = ref('');
 const editorConfig = reactive({
     heading: {
         options: [

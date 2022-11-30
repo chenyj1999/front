@@ -10,6 +10,7 @@
     "@ckeditor/ckeditor5-vue": "^4.0.1",
     "axios": "^0.27.2",
     "ckeditor5-custom-build": "file:ckeditor5",
+    "@ckeditor/ckeditor5-build-classic": "^35.3.2",
     "moment": "^2.29.4",
     "vue": "^3.2.38",
     "vue-cookie": "^1.1.4",
