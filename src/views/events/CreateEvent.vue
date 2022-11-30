@@ -3,37 +3,15 @@
 import axios from 'axios';
 import { ref, reactive, computed } from 'vue';
 import router from '@/router';
-import { component as CKEditor } from '@ckeditor/ckeditor5-vue';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import Editor from '../../components/Editor.vue'
+import 'ckeditor5-custom-build/build/ckeditor';
 
 if (sessionStorage.getItem("username") == null) {
     router.replace({ path: '/' });
 }
-const props = defineProps({
-    modelValue: String
-})
+
 const editor = ClassicEditor;
 const editordata = ref('')
 const editorConfig = reactive({
-    toolbar: {
-        items: [
-            'heading',
-            'bold',
-            'italic',
-            'link',
-            '|',
-            'bulletedList',
-            'numberedList',
-            'blockQuote',
-            'insertTable',
-            'imageUpload',
-            'mediaEmbed',
-            '|',
-            'undo',
-            'redo',
-        ]
-    },
     heading: {
         options: [
             { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
@@ -41,11 +19,8 @@ const editorConfig = reactive({
             { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
         ]
     },
-    alignment: {
-        options: [
-            { name: 'left', className: 'my-align-left' },
-            { name: 'right', className: 'my-align-right' }
-        ]
+    table: {
+        defaultHeadings: { rows: 1, columns: 1 }
     },
 })
 
@@ -92,7 +67,7 @@ function post() {
     form.append('editordata', editordata.value)
     form.append('link', apiResult.data.link)
     form.append('type', 'text')
-    if (apiResult.data.title == undefined || apiResult.data.content == '' || apiResult.data.start_date == undefined || apiResult.data.end_date == '' || apiResult.data.event_date == undefined) {
+    /*if (apiResult.data.title == undefined || apiResult.data.content == '' || apiResult.data.start_date == undefined || apiResult.data.end_date == '' || apiResult.data.event_date == undefined) {
         alert("請輸入");
     }
     else {
@@ -105,7 +80,7 @@ function post() {
                 console.log(error);
                 //console.log(image.value);
             })
-    }
+    }*/
 
 }
 
@@ -227,7 +202,7 @@ function post4(event) {
             <div class="row">
                 <label for="">文章內容：</label>
                 <div class="fg-black" style="--ckborder-radius:0.25rem;width: 50%;">
-                    <CKEditor :editor="editor" v-model="editordata" :config="editorConfig"></CKEditor>
+                    <ckeditor :editor="editor" v-model="editordata" :config="editorConfig"></ckeditor>
                 </div>
             </div>
             <div class="row">
