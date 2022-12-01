@@ -8,8 +8,9 @@ import 'ckeditor5-custom-build/build/ckeditor';
 if (sessionStorage.getItem("username") == null) {
     router.replace({ path: '/' });
 }
+
 const editor = ClassicEditor;
-let editordata = '';
+const editordata = ref('');
 const editorConfig = reactive({
     heading: {
         options: [
@@ -67,7 +68,6 @@ function post() {
     form.append('editordata', apiResult.data.editordata)
     form.append('link', apiResult.data.editordata)
     form.append('type', 'text')
-    console.log(apiResult.data.editordata);
     if (apiResult.data.title == undefined || apiResult.data.content == '' || apiResult.data.start_date == undefined || apiResult.data.end_date == '' || apiResult.data.event_date == undefined) {
         alert("請輸入");
     }
