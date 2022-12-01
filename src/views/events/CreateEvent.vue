@@ -9,7 +9,7 @@ if (sessionStorage.getItem("username") == null) {
     router.replace({ path: '/' });
 }
 
-//const editor = ClassicEditor;
+const editor = ClassicEditor;
 const editordata = ref('');
 const editorConfig = reactive({
     heading: {
@@ -22,7 +22,7 @@ const editorConfig = reactive({
     table: {
         defaultHeadings: { rows: 1, columns: 1 }
     },
-})
+});
 
 var url_event = 'http://127.0.0.1/foundation/foundation_laravel/public/api/event';
 var url_event_link = 'http://127.0.0.1/foundation/foundation_laravel/public/api/event/link';
@@ -67,7 +67,8 @@ function post() {
     form.append('editordata', editordata.value)
     form.append('link', apiResult.data.link)
     form.append('type', 'text')
-    /*if (apiResult.data.title == undefined || apiResult.data.content == '' || apiResult.data.start_date == undefined || apiResult.data.end_date == '' || apiResult.data.event_date == undefined) {
+    console.log(editordata.value);
+    if (apiResult.data.title == undefined || apiResult.data.content == '' || apiResult.data.start_date == undefined || apiResult.data.end_date == '' || apiResult.data.event_date == undefined) {
         alert("請輸入");
     }
     else {
@@ -80,7 +81,7 @@ function post() {
                 console.log(error);
                 //console.log(image.value);
             })
-    }*/
+    }
 
 }
 
