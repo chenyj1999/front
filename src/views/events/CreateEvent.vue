@@ -8,9 +8,8 @@ import 'ckeditor5-custom-build/build/ckeditor';
 if (sessionStorage.getItem("username") == null) {
     router.replace({ path: '/' });
 }
-
-//const editor = ClassicEditor;
-const editordata = ref('');
+const editor = ClassicEditor;
+let editordata = '';
 const editorConfig = reactive({
     heading: {
         options: [
@@ -22,7 +21,7 @@ const editorConfig = reactive({
     table: {
         defaultHeadings: { rows: 1, columns: 1 }
     },
-})
+});
 
 var url_event = 'http://127.0.0.1/foundation/foundation_laravel/public/api/event';
 var url_event_link = 'http://127.0.0.1/foundation/foundation_laravel/public/api/event/link';
@@ -40,6 +39,7 @@ let apiResult = reactive({
         "image_2": "",
         "image_3": "",
         "image_4": "",
+        "editordata": "",
         "link": "",
         "type": "",
         "created_at": "",
@@ -64,10 +64,11 @@ function post() {
     form.append('image_2', apiResult.data.image_2)
     form.append('image_3', apiResult.data.image_3)
     form.append('image_4', apiResult.data.image_4)
-    form.append('editordata', editordata.value)
-    form.append('link', apiResult.data.link)
+    form.append('editordata', apiResult.data.editordata)
+    form.append('link', apiResult.data.editordata)
     form.append('type', 'text')
-    /*if (apiResult.data.title == undefined || apiResult.data.content == '' || apiResult.data.start_date == undefined || apiResult.data.end_date == '' || apiResult.data.event_date == undefined) {
+    console.log(apiResult.data.editordata);
+    if (apiResult.data.title == undefined || apiResult.data.content == '' || apiResult.data.start_date == undefined || apiResult.data.end_date == '' || apiResult.data.event_date == undefined) {
         alert("請輸入");
     }
     else {
@@ -80,7 +81,7 @@ function post() {
                 console.log(error);
                 //console.log(image.value);
             })
-    }*/
+    }
 
 }
 
@@ -202,7 +203,8 @@ function post4(event) {
             <div class="row">
                 <label for="">文章內容：</label>
                 <div class="fg-black" style="--ckborder-radius:0.25rem;width: 50%;">
-                    <ckeditor :editor="editor" v-model="editordata" :config="editorConfig"></ckeditor>
+                    <ckeditor :editor="editor" v-model="apiResult.data.editordata" :config="editorConfig">
+                    </ckeditor>
                 </div>
             </div>
             <div class="row">
