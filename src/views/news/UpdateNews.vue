@@ -46,7 +46,7 @@ function Update() {
             .then((res) => {
                 apiResult.data = res.data;
                 alert("更新成功");
-                router.push({ path: 'AllNews' })
+                router.push({ path: 'alleews' })
                 console.log(response)
             })
             .catch((error) => console.log(error))

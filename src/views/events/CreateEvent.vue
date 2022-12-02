@@ -66,7 +66,7 @@ function post() {
     form.append('image_3', apiResult.data.image_3)
     form.append('image_4', apiResult.data.image_4)
     form.append('editordata', apiResult.data.editordata)
-    form.append('link', apiResult.data.editordata)
+    form.append('link', apiResult.data.link)
     form.append('type', 'text')
     if (apiResult.data.title == undefined || apiResult.data.content == '' || apiResult.data.start_date == undefined || apiResult.data.end_date == '' || apiResult.data.event_date == undefined) {
         alert("請輸入");
@@ -75,7 +75,7 @@ function post() {
         axios.post(url_event, form)
             .then((res) => {
                 alert("新增成功");
-                router.replace({ path: '/allEvent' });
+                router.replace({ path: '/allevent' });
             })
             .catch((error) => {
                 console.log(error);
@@ -98,7 +98,7 @@ function createlink() {
         axios.post(url_event_link, form)
             .then((res) => {
                 alert("新增成功");
-                router.replace({ path: '/allEvent' });
+                router.replace({ path: '/allevent' });
             })
             .catch((error) => {
                 console.log(error);
@@ -158,7 +158,7 @@ function post4(event) {
             </div>
             <div class="row">
                 <label for="">內文：</label>
-                <textarea name="content" cols="100" rows="10" v-model="apiResult.data.content"></textarea>
+                <textarea name="content" cols="100" rows="5" v-model="apiResult.data.content"></textarea>
             </div>
             <div class="row">
                 <label for="">主辦單位：</label>

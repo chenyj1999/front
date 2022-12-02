@@ -11,33 +11,33 @@ const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/allNews',
-      name: 'allNews',
+      path: '/allnews',
+      name: 'allnews',
       component: AllNews
     },
     {
-      path: '/createNews',
-      name: 'createNews',
+      path: '/createnews',
+      name: 'createnews',
       component: CreateNews
     },
     {
-      path: '/updateNews',
-      name: 'updateNews',
+      path: '/updatenews',
+      name: 'updatenews',
       component: UpdateNews
     },
     {
-      path: '/allEvent',
-      name: 'allEvent',
+      path: '/allevent',
+      name: 'allevent',
       component: AllEvent
     },
     {
-      path: '/createEvent',
-      name: 'createEvent',
+      path: '/createevent',
+      name: 'createevent',
       component: CreateEvent
     },
     {
-      path: '/updateEvent',
-      name: 'updateEvent',
+      path: '/updateevent',
+      name: 'updateevent',
       component: UpdateEvent
     },
     {

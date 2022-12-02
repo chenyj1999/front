@@ -2,6 +2,7 @@
 <script setup>
 import axios from 'axios';
 import { ref, reactive, computed } from 'vue';
+import router from '@/router';
 
 if (sessionStorage.getItem("username") == null) {
     router.replace({ path: '/' });
@@ -64,14 +65,30 @@ function Delete(id) {
             <td>{{ item.type }}</td>
             <td>{{ item.created_at }}</td>
             <td>
-                <RouterLink :to="{ name: 'updateNews', query: { id: item.id } }">更新</RouterLink>
+                <RouterLink :to="{ name: 'updateeews', query: { id: item.id } }"><button class="update">更新</button>
+                </RouterLink>
             </td>
-            <td @click="Delete(item.id)">刪除</td>
+            <td @click="Delete(item.id)"><button class="delete">刪除</button></td>
         </tr>
     </table>
 </template>
 
 <style scoped>
+button {
+    border-radius: 10px;
+    border: 1px solid rgb(90, 90, 90);
+}
 
+.update:hover {
+    background-color: #6b9aff;
+    color: white;
+    border: none;
+}
+
+.delete:hover {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+}
 </style>
 

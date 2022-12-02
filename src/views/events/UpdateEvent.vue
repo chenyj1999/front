@@ -59,7 +59,7 @@ function Update() {
             .then((res) => {
                 apiResult.data = res.data;
                 alert("修改成功");
-                router.push({ path: 'AllEvent' })
+                router.push({ path: 'allevent' })
                 console.log(res)
             })
             .catch((error) => console.log(error))
