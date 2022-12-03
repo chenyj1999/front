@@ -3,7 +3,7 @@
 import axios from 'axios';
 import { ref, reactive, computed } from 'vue';
 import router from '@/router';
-import 'ckeditor5-custom-build/build/ckeditor';
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic/build/ckeditor";
 
 if (sessionStorage.getItem("username") == null) {
     router.replace({ path: '/' });
