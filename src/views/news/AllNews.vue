@@ -65,7 +65,7 @@ function Delete(id) {
             <td>{{ item.type }}</td>
             <td>{{ item.created_at }}</td>
             <td>
-                <RouterLink :to="{ name: 'updateeews', query: { id: item.id } }"><button class="update">更新</button>
+                <RouterLink :to="{ name: 'updatenews', query: { id: item.id } }"><button class="update">更新</button>
                 </RouterLink>
             </td>
             <td @click="Delete(item.id)"><button class="delete">刪除</button></td>

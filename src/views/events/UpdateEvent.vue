@@ -107,7 +107,7 @@ function Update() {
             <input type="text" name="address" v-model="apiResult.data.address">
         </div>
         <div class="row">
-            <label for="">連結</label>
+            <label for="">活動報名連結：</label>
             <input type="text" name="link" v-model="apiResult.data.link">
         </div>
 
