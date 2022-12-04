@@ -3,7 +3,8 @@
 import axios from 'axios';
 import { ref, reactive, computed } from 'vue';
 import router from '@/router';
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic/build/ckeditor";
+
+//import 'ckeditor5-custom-build/build/ckeditor';
 
 if (sessionStorage.getItem("username") == null) {
     router.replace({ path: '/' });
@@ -12,16 +13,6 @@ if (sessionStorage.getItem("username") == null) {
 const editor = ClassicEditor;
 const editordata = ref('');
 const editorConfig = reactive({
-    heading: {
-        options: [
-            { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-            { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-            { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
-        ]
-    },
-    table: {
-        defaultHeadings: { rows: 1, columns: 1 }
-    },
 });
 
 var url_event = 'http://127.0.0.1/foundation/foundation_laravel/public/api/event';

@@ -6,11 +6,16 @@
     "build": "vite build",
     "preview": "vite preview --port 4173"
   },
+  "mail": "ckeditor5/build/ckeditor.js",
   "dependencies": {
-    "@ckeditor/ckeditor5-build-classic": "^35.3.2",
     "@ckeditor/ckeditor5-vue": "^4.0.1",
+    "ckeditor5-custom-build": "file:ckeditor5",
     "axios": "^0.27.2",
+    "css-loader": "^5.2.7",
     "moment": "^2.29.4",
+    "postcss-loader": "^4.3.0",
+    "raw-loader": "^4.0.2",
+    "style-loader": "^2.0.0",
     "vue": "^3.2.38",
     "vue-cookie": "^1.1.4",
     "vue-router": "^4.1.5"
