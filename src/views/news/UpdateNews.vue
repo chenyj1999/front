@@ -46,7 +46,7 @@ function Update() {
             .then((res) => {
                 apiResult.data = res.data;
                 alert("更新成功");
-                router.push({ path: 'alleews' })
+                router.push({ path: 'allnews' })
                 console.log(response)
             })
             .catch((error) => console.log(error))
@@ -74,12 +74,12 @@ function Update() {
         </div>
         <div class="row">
             <label for="">類型</label>
-                <select v-model="apiResult.data.type">
-                    <option disabled value="">請選擇</option>
-                    <option value="green">環保</option>
-                    <option value="care">長照</option>
-                    <option value="build">建築</option>
-                </select>
+            <select v-model="apiResult.data.type">
+                <option disabled value="">請選擇</option>
+                <option value="green">環保</option>
+                <option value="care">長照</option>
+                <option value="build">建築</option>
+            </select>
         </div>
 
         <div class="row">
